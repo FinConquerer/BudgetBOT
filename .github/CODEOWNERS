@@ -1,8 +1,7 @@
 # CODEOWNERS có hiệu lực theo NHÁNH chứa file này (PR target nhánh nào -> đọc CODEOWNERS nhánh đó).
 # Policy review (xem note "Setup Jira & GitHub" mục B.4b):
-#   - Nhánh `production`: QA/Reviewer chốt quality gate (file này, trên nhánh production).
-#   - Nhánh `develop`  : Tech Leader code review (sửa file này trên nhánh develop sang username Tech Leader).
+#   - Nhánh `develop`   : Tech Leader code review  (file này — sẽ merge vào develop).
+#   - Nhánh `production`: QA/Reviewer chốt quality gate (trên nhánh production để là @AIVIETNAM-AIO-TRANXUANDUC).
 #
-# QA/Reviewer (Scrum Master):
-* @AIVIETNAM-AIO-TRANXUANDUC
-# TODO: trên nhánh develop đổi thành @<github-username-tech-leader> (Tech Leader chưa có username trong roster).
+# Tech Leader (code review nhánh develop):
+* @AIVIETNAM-AIO-Zhincz
