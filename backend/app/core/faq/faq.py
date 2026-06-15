@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 
-_DATA = Path(__file__).resolve().parent.parent / "data" / "faq.json"
+_DATA = Path(__file__).resolve().parents[3] / "data" / "faq.json"
 
 
 def load_faq(path: Path | None = None) -> list[dict]:

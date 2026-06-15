@@ -1,12 +1,21 @@
-"""MVP UI bằng Streamlit. Chạy: streamlit run app.py"""
-import streamlit as st
+"""Prototype UI bằng Streamlit (DEMO NHANH, không phải Frontend chính thức).
 
-from budgetbot.faq.faq import answer
-from budgetbot.rules.engine import allocation_50_30_20, evaluate_allocation
-from budgetbot.rules.models import UserProfile
+Frontend chính thức = React ở frontend/. File này import trực tiếp core để chạy
+offline khi chưa dựng API. Chạy: pip install streamlit && streamlit run app.py
+"""
+import sys
+from pathlib import Path
 
-st.title("💰 BudgetBOT — Trợ lý ngân sách cá nhân")
-st.caption("MVP — chỉ mang tính tham khảo, không phải lời khuyên đầu tư.")
+sys.path.insert(0, str(Path(__file__).resolve().parent / "backend"))
+
+import streamlit as st  # noqa: E402
+
+from app.core.faq.faq import answer  # noqa: E402
+from app.core.rules.engine import allocation_50_30_20, evaluate_allocation  # noqa: E402
+from app.core.rules.models import UserProfile  # noqa: E402
+
+st.title("💰 BudgetBOT — Trợ lý ngân sách cá nhân (prototype)")
+st.caption("Prototype nội bộ — Frontend chính thức là React. Chỉ tham khảo, không phải lời khuyên đầu tư.")
 
 tab_faq, tab_plan = st.tabs(["Hỏi đáp", "Lập kế hoạch"])
 

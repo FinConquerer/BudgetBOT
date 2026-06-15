@@ -1,5 +1,5 @@
 """Rule Engine — tính chỉ số & đề xuất phân bổ ngân sách (deterministic)."""
-from budgetbot.rules.models import UserProfile
+from app.core.rules.models import UserProfile
 
 RULE_50_30_20 = {"needs": 0.50, "wants": 0.30, "savings": 0.20}
 

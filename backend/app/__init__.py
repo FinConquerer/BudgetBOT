@@ -1,0 +1,1 @@
+"""BudgetBOT backend (FastAPI)."""
