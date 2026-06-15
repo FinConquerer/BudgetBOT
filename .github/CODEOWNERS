@@ -1,2 +1,7 @@
-# Mọi PR cần QA/Reviewer (Đức) duyệt
-* @AIVIETNAM-AIO-TRANXUANDUC
+# CODEOWNERS có hiệu lực theo NHÁNH chứa file này (PR target nhánh nào -> đọc CODEOWNERS nhánh đó).
+# Policy review (xem note "Setup Jira & GitHub" mục B.4b):
+#   - Nhánh `develop`   : Tech Leader code review  (file này — sẽ merge vào develop).
+#   - Nhánh `production`: QA/Reviewer chốt quality gate (trên nhánh production để là @AIVIETNAM-AIO-TRANXUANDUC).
+#
+# Tech Leader (code review nhánh develop):
+* @AIVIETNAM-AIO-Zhincz

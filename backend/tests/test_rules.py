@@ -1,13 +1,13 @@
 import pytest
 
-from budgetbot.rules.engine import (
+from app.core.rules.engine import (
     allocation_50_30_20,
     emergency_fund_target,
     evaluate_allocation,
     goal_timeline,
     savings_rate,
 )
-from budgetbot.rules.models import UserProfile
+from app.core.rules.models import UserProfile
 
 
 def test_savings_rate():

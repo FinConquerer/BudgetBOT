@@ -1,4 +1,4 @@
-from budgetbot.faq.faq import answer, load_faq
+from app.core.faq.faq import answer, load_faq
 
 
 def test_load_faq_nonempty():
