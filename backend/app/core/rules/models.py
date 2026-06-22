@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from typing import Literal
 
 
-
+@dataclass
 class UserProfile:
     """Model cũ dùng cho rule 50/30/20 hiện có."""
 
