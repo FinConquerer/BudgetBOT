@@ -1,40 +1,41 @@
 """REST endpoints — Frontend React gọi vào đây."""
-from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
 
-from app.core.faq.faq import answer as faq_answer
-from app.core.rules.engine import (
-    allocation_50_30_20,
-    evaluate_allocation,
-    savings_rate,
+from fastapi import APIRouter, Depends
+
+from app.dependencies import get_budget_service
+from app.schemas import (
+    MockProfileResponse,
+    PlanRequest,
+    PlanResponse,
+    WhatIfRequest,
+    WhatIfResponse,
 )
-from app.core.rules.models import UserProfile
-from app.db.database import get_db
-from app.db.models import Faq
-from app.schemas import FaqAnswer, FaqQuery, PlanRequest, PlanResponse
+from app.services.budget_service import BudgetService
 
 router = APIRouter()
 
 
-@router.post("/faq", response_model=FaqAnswer, tags=["faq"])
-def ask_faq(query: FaqQuery, db: Session = Depends(get_db)) -> FaqAnswer:
-    """Tra cứu FAQ từ Postgres (fallback faq.json nếu DB rỗng)."""
-    rows = db.query(Faq).all()
-    faqs = [{"question": r.question, "answer": r.answer, "keywords": r.keywords} for r in rows]
-    return FaqAnswer(answer=faq_answer(query.question, faqs or None))
-
-
 @router.post("/plan", response_model=PlanResponse, tags=["plan"])
-def make_plan(req: PlanRequest) -> PlanResponse:
-    """Tính phân bổ 50/30/20, đánh giá phân bổ hiện tại và tỷ lệ tiết kiệm."""
-    profile = UserProfile(
-        monthly_income=req.monthly_income,
-        essential_expenses=req.essential_expenses,
-        discretionary_expenses=req.discretionary_expenses,
-        monthly_savings=req.monthly_savings,
-    )
-    return PlanResponse(
-        allocation_50_30_20=allocation_50_30_20(req.monthly_income),
-        evaluation=evaluate_allocation(profile),
-        savings_rate=round(savings_rate(req.monthly_income, req.monthly_savings), 3),
-    )
+def make_plan(
+    req: PlanRequest,
+    service: BudgetService = Depends(get_budget_service),
+) -> PlanResponse:
+    """Tạo budget plan bằng rulebase deterministic."""
+    return service.create_plan(req)
+
+
+@router.post("/what-if", response_model=WhatIfResponse, tags=["plan"])
+def run_what_if(
+    req: WhatIfRequest,
+    service: BudgetService = Depends(get_budget_service),
+) -> WhatIfResponse:
+    """Tính lại budget plan sau một thay đổi giả định."""
+    return service.run_what_if(req)
+
+
+@router.get("/mock-profiles", response_model=list[MockProfileResponse], tags=["mock"])
+def list_mock_profiles(
+    service: BudgetService = Depends(get_budget_service),
+) -> list[MockProfileResponse]:
+    """Trả hồ sơ mẫu để test/demo API khi chưa có database profile."""
+    return service.list_mock_profiles()

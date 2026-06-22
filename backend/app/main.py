@@ -1,6 +1,5 @@
 """Điểm vào FastAPI. Chạy: uvicorn app.main:app --reload"""
 import os
-from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -8,16 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes import router
 
 
-@asynccontextmanager
-async def lifespan(_app: FastAPI):
-    """Tạo schema + seed FAQ khi khởi động (idempotent)."""
-    from app.db.seed import seed
-
-    seed()
-    yield
-
-
-app = FastAPI(title="BudgetBOT API", version="0.1.0", lifespan=lifespan)
+app = FastAPI(title="BudgetBOT Rulebase API", version="0.1.0")
 
 # Cho phép Frontend React (Vite dev server) gọi API.
 _origins = os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",")
