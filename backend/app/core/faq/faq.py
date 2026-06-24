@@ -28,6 +28,19 @@ _INTENT_BY_PREFIX = {
 _INTENT_CUES = {
     "greeting": ("xin chao", "chao buoi", "hello", "hi", "hey", "cam on", "tam biet"),
     "about_bot": ("ban la ai", "chatbot", "tro ly", "ban lam duoc gi", "chuc nang"),
+    "budget_planning": (
+        "lap ngan sach",
+        "ngan sach ca nhan",
+        "phan bo thu nhap",
+        "ke hoach chi tieu",
+    ),
+    "debt_management": (
+        "no the tin dung",
+        "tra no",
+        "quan ly no",
+        "dang no",
+        "bi no",
+    ),
     "financial_assessment": (
         "tai chinh cua toi",
         "danh gia tai chinh",
@@ -65,6 +78,7 @@ _POSITIVE_CUES = {
     "tuyet voi",
     "vui",
     "on dinh",
+    "on",
     "hai long",
     "thanh cong",
 }
@@ -245,6 +259,7 @@ class FAQEngine:
         return _INTENT_BY_PREFIX.get(prefix, "financial_knowledge")
 
     def _lexical_score(self, query: str, item: dict, intent: str) -> float:
+        """Ưu tiên câu và cụm từ dài, cụ thể hơn các từ khóa đơn lẻ."""
         folded_query = normalize_text(query, remove_accents=True)
         query_tokens = set(folded_query.split())
         folded_question = normalize_text(item.get("question", ""), remove_accents=True)
@@ -263,7 +278,14 @@ class FAQEngine:
         phrase_score = 0.0
         if exact_phrases:
             longest = max(len(phrase.split()) for phrase in exact_phrases)
-            phrase_score = min(1.0, 0.55 + 0.12 * longest + 0.04 * (len(exact_phrases) - 1))
+            phrase_coverage = max(
+                len(phrase.split()) / len(query_tokens) for phrase in exact_phrases
+            )
+            phrase_score = min(
+                1.0,
+                (0.55 + 0.12 * longest + 0.04 * (len(exact_phrases) - 1))
+                * phrase_coverage,
+            )
 
         keyword_overlap = max(
             (_dice(query_tokens, set(phrase.split())) for phrase in keyword_phrases),
@@ -338,6 +360,16 @@ class FAQEngine:
 
         top = matches[0]
         runner_up = matches[1] if len(matches) > 1 else None
+        if top.score < self.min_confidence:
+            return FAQResult(
+                answer=_NO_MATCH_MESSAGE,
+                intent=intent,
+                sentiment=sentiment,
+                confidence=top.score,
+                status="no_match",
+                matches=matches,
+            )
+
         is_ambiguous = (
             runner_up is not None
             and top.score >= self.min_confidence * 0.8
@@ -353,17 +385,6 @@ class FAQEngine:
                 sentiment=sentiment,
                 confidence=top.score,
                 status="clarification",
-                matches=matches,
-            )
-
-        if top.score < self.min_confidence:
-            confidence = matches[0].score if matches else 0.0
-            return FAQResult(
-                answer=_NO_MATCH_MESSAGE,
-                intent=intent,
-                sentiment=sentiment,
-                confidence=confidence,
-                status="no_match",
                 matches=matches,
             )
 
