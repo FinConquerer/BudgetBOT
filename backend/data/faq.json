@@ -1,6 +1,1723 @@
 [
-  {"keywords": ["tiết kiệm", "bao nhiêu %", "phần trăm"], "question": "Nên tiết kiệm bao nhiêu % thu nhập?", "answer": "Theo quy tắc 50/30/20, nên dành tối thiểu 20% thu nhập cho tiết kiệm và trả nợ."},
-  {"keywords": ["quỹ khẩn cấp", "emergency"], "question": "Quỹ khẩn cấp nên có bao nhiêu?", "answer": "Quỹ khẩn cấp nên đủ 3-6 tháng chi phí thiết yếu."},
-  {"keywords": ["tự do tài chính", "financial freedom"], "question": "Cần bao nhiêu để tự do tài chính?", "answer": "Một ước lượng phổ biến là 25 lần chi phí sinh hoạt một năm (quy tắc rút 4%)."},
-  {"keywords": ["50/30/20", "phân bổ", "quy tắc"], "question": "Quy tắc 50/30/20 là gì?", "answer": "50% nhu cầu thiết yếu, 30% mong muốn, 20% tiết kiệm và trả nợ."}
+  {
+    "id": "GREET_001",
+    "keywords": [
+      "xin chào",
+      "chào",
+      "hello",
+      "hi",
+      "hey"
+    ],
+    "question": "Xin chào",
+    "answer": "Xin chào! Tôi là Budget Planner Assistant. Tôi có thể giúp bạn tìm hiểu về quản lý tài chính cá nhân, lập ngân sách và đưa ra các khuyến nghị tài chính phù hợp."
+  },
+  {
+    "id": "GREET_002",
+    "keywords": [
+      "chào buổi sáng",
+      "good morning"
+    ],
+    "question": "Chào buổi sáng",
+    "answer": "Chào buổi sáng! Chúc bạn một ngày tràn đầy năng lượng. Hãy cho tôi biết bạn cần hỗ trợ gì về tài chính hôm nay nhé."
+  },
+  {
+    "id": "GREET_003",
+    "keywords": [
+      "chào buổi chiều",
+      "good afternoon"
+    ],
+    "question": "Chào buổi chiều",
+    "answer": "Chào buổi chiều! Tôi sẵn sàng hỗ trợ bạn về ngân sách, tiết kiệm hoặc đánh giá tài chính cá nhân."
+  },
+  {
+    "id": "GREET_004",
+    "keywords": [
+      "chào buổi tối",
+      "good evening"
+    ],
+    "question": "Chào buổi tối",
+    "answer": "Chào buổi tối! Nếu bạn có câu hỏi về tài chính hoặc muốn đánh giá tình hình tài chính, tôi rất sẵn lòng hỗ trợ."
+  },
+  {
+    "id": "GREET_005",
+    "keywords": [
+      "bắt đầu",
+      "start",
+      "bắt đầu thôi",
+      "bắt đầu nào"
+    ],
+    "question": "Bắt đầu",
+    "answer": "Rất vui được đồng hành cùng bạn! Bạn muốn: (1) Đánh giá tài chính cá nhân, (2) Hỏi về quản lý ngân sách, (3) Nhận lời khuyên tài chính?"
+  },
+  {
+    "id": "GREET_006",
+    "keywords": [
+      "rất vui được gặp",
+      "nice to meet you",
+      "hân hạnh"
+    ],
+    "question": "Rất vui được gặp bạn",
+    "answer": "Tôi cũng rất vui! Hãy cho tôi biết bạn muốn tìm hiểu về điều gì trong lĩnh vực tài chính cá nhân nhé."
+  },
+  {
+    "id": "GREET_007",
+    "keywords": [
+      "cảm ơn",
+      "thanks",
+      "thank you",
+      "cảm ơn nhiều"
+    ],
+    "question": "Cảm ơn bạn",
+    "answer": "Rất vui được giúp bạn! Nếu còn câu hỏi nào về ngân sách, tiết kiệm hay mục tiêu tài chính, cứ hỏi tôi nhé."
+  },
+  {
+    "id": "GREET_008",
+    "keywords": [
+      "tạm biệt",
+      "bye",
+      "goodbye",
+      "hẹn gặp lại",
+      "chào tạm biệt"
+    ],
+    "question": "Tạm biệt",
+    "answer": "Cảm ơn bạn đã sử dụng Budget Planner Assistant. Chúc bạn quản lý tài chính hiệu quả và sớm đạt được mục tiêu. Hẹn gặp lại!"
+  },
+  {
+    "id": "GREET_009",
+    "keywords": [
+      "bạn là ai",
+      "giới thiệu",
+      "tôi đang nói chuyện với ai"
+    ],
+    "question": "Bạn là ai?",
+    "answer": "Tôi là Budget Planner Assistant — chatbot hỗ trợ quản lý tài chính cá nhân. Tôi có thể giải đáp kiến thức tài chính, thu thập thông tin và đưa ra đánh giá, khuyến nghị phù hợp với bạn."
+  },
+  {
+    "id": "GREET_010",
+    "keywords": [
+      "oke",
+      "ok",
+      "được rồi",
+      "tiếp tục"
+    ],
+    "question": "Oke",
+    "answer": "Tuyệt! Bạn muốn tiếp tục với nội dung gì? Tôi có thể giải đáp kiến thức tài chính hoặc hỗ trợ đánh giá tình hình tài chính của bạn."
+  },
+  {
+    "id": "GREET_011",
+    "keywords": [
+      "không biết hỏi gì",
+      "hỏi gì được",
+      "tôi cần gì"
+    ],
+    "question": "Tôi không biết nên hỏi gì",
+    "answer": "Không sao! Bạn có thể bắt đầu bằng cách cho tôi biết thu nhập và chi tiêu hàng tháng của bạn — tôi sẽ giúp đánh giá và đưa ra gợi ý phù hợp."
+  },
+  {
+    "id": "GREET_012",
+    "keywords": [
+      "thử dùng",
+      "thử xem",
+      "dùng thử"
+    ],
+    "question": "Tôi muốn thử dùng chatbot này",
+    "answer": "Chào mừng bạn! Bạn có thể hỏi bất kỳ câu hỏi nào về quản lý tài chính, hoặc nói 'Tôi muốn đánh giá tài chính' để bắt đầu quy trình đánh giá cá nhân hóa."
+  },
+  {
+    "id": "GREET_013",
+    "keywords": [
+      "giúp tôi",
+      "cần giúp đỡ",
+      "hỗ trợ tôi"
+    ],
+    "question": "Bạn có thể giúp tôi không?",
+    "answer": "Tất nhiên rồi! Bạn đang cần hỗ trợ về vấn đề tài chính nào? Lập ngân sách, tiết kiệm, quỹ khẩn cấp, hay mục tiêu tài chính?"
+  },
+  {
+    "id": "GREET_014",
+    "keywords": [
+      "chào mừng",
+      "welcome"
+    ],
+    "question": "Chào mừng",
+    "answer": "Chào mừng bạn đến với Budget Planner Assistant! Tôi ở đây để giúp bạn quản lý tài chính thông minh hơn. Bạn muốn bắt đầu từ đâu?"
+  },
+  {
+    "id": "GREET_015",
+    "keywords": [
+      "chào cậu",
+      "chào mày",
+      "hey bot"
+    ],
+    "question": "Chào cậu!",
+    "answer": "Chào bạn! Tôi là Budget Planner Assistant. Bạn cần tư vấn tài chính gì không?"
+  },
+  {
+    "id": "GREET_016",
+    "keywords": [
+      "trở lại",
+      "tôi quay lại",
+      "quay lại rồi"
+    ],
+    "question": "Tôi quay lại rồi",
+    "answer": "Chào mừng bạn quay lại! Bạn muốn tiếp tục từ đâu — đánh giá tài chính, hỏi về ngân sách, hay nhận thêm khuyến nghị?"
+  },
+  {
+    "id": "ABOUT_001",
+    "keywords": [
+      "bạn làm được gì",
+      "chức năng",
+      "tính năng",
+      "công dụng"
+    ],
+    "question": "Chatbot này dùng để làm gì?",
+    "answer": "Tôi được thiết kế để hỗ trợ quản lý tài chính cá nhân: giải thích nguyên tắc tài chính, thu thập thông tin, đánh giá tình hình tài chính và đưa ra khuyến nghị cá nhân hóa."
+  },
+  {
+    "id": "ABOUT_002",
+    "keywords": [
+      "ai nên dùng",
+      "đối tượng",
+      "phù hợp với ai"
+    ],
+    "question": "Chatbot này phù hợp với ai?",
+    "answer": "Phù hợp với sinh viên, người mới đi làm, hoặc bất kỳ ai muốn kiểm soát chi tiêu tốt hơn và xây dựng thói quen tài chính lành mạnh."
+  },
+  {
+    "id": "ABOUT_003",
+    "keywords": [
+      "hạn chế",
+      "không làm được gì",
+      "giới hạn"
+    ],
+    "question": "Bạn không hỗ trợ những gì?",
+    "answer": "Tôi không thay thế chuyên gia tài chính hay cố vấn đầu tư. Khuyến nghị của tôi chỉ mang tính tham khảo dựa trên nguyên tắc tài chính phổ biến."
+  },
+  {
+    "id": "ABOUT_004",
+    "keywords": [
+      "có lưu thông tin không",
+      "bảo mật",
+      "quyền riêng tư",
+      "dữ liệu"
+    ],
+    "question": "Bạn có lưu thông tin của tôi không?",
+    "answer": "Thông tin bạn chia sẻ chỉ được dùng trong phiên hội thoại để phân tích và đưa ra khuyến nghị. Việc lưu trữ dài hạn tùy thuộc vào chính sách hệ thống."
+  },
+  {
+    "id": "ABOUT_005",
+    "keywords": [
+      "đánh giá tài chính",
+      "financial assessment"
+    ],
+    "question": "Bạn đánh giá tài chính bằng cách nào?",
+    "answer": "Tôi thu thập thông tin về thu nhập, chi tiêu, tiết kiệm, nợ và mục tiêu của bạn, sau đó so sánh với các nguyên tắc tài chính chuẩn để đưa ra đánh giá và khuyến nghị phù hợp."
+  },
+  {
+    "id": "ABOUT_006",
+    "keywords": [
+      "tư vấn ngân sách",
+      "budget planning",
+      "lập ngân sách"
+    ],
+    "question": "Bạn có thể giúp tôi lập ngân sách không?",
+    "answer": "Có! Tôi có thể gợi ý cách phân bổ thu nhập, xây dựng quỹ khẩn cấp và lập kế hoạch tiết kiệm dựa trên tình hình cụ thể của bạn."
+  },
+  {
+    "id": "ABOUT_007",
+    "keywords": [
+      "có thể hỏi gì",
+      "hỏi được những gì"
+    ],
+    "question": "Tôi có thể hỏi bạn những gì?",
+    "answer": "Bạn có thể hỏi về: nguyên tắc 50/30/20, quỹ khẩn cấp, cách tiết kiệm, quản lý nợ, mục tiêu tài chính, phân bổ ngân sách, và nhiều chủ đề tài chính cá nhân khác."
+  },
+  {
+    "id": "ABOUT_008",
+    "keywords": [
+      "miễn phí không",
+      "mất tiền không",
+      "phí sử dụng"
+    ],
+    "question": "Sử dụng chatbot này có mất phí không?",
+    "answer": "Việc sử dụng chatbot này hoàn toàn miễn phí. Tôi ở đây để hỗ trợ bạn quản lý tài chính tốt hơn mà không tính bất kỳ chi phí nào."
+  },
+  {
+    "id": "ABOUT_009",
+    "keywords": [
+      "chatbot có chính xác không",
+      "tin tưởng được không",
+      "độ chính xác"
+    ],
+    "question": "Tôi có thể tin tưởng vào khuyến nghị của bạn không?",
+    "answer": "Các khuyến nghị của tôi dựa trên nguyên tắc tài chính cá nhân được thừa nhận rộng rãi. Tuy nhiên, mỗi người có hoàn cảnh khác nhau, nên bạn nên cân nhắc kỹ và tham khảo chuyên gia với các quyết định tài chính lớn."
+  },
+  {
+    "id": "ABOUT_010",
+    "keywords": [
+      "làm lại",
+      "reset",
+      "bắt đầu lại",
+      "xóa thông tin"
+    ],
+    "question": "Tôi có thể bắt đầu lại từ đầu không?",
+    "answer": "Có! Bạn chỉ cần nói 'Bắt đầu lại' hoặc 'Đánh giá lại tài chính' và tôi sẽ thu thập thông tin từ đầu để đưa ra đánh giá mới."
+  },
+  {
+    "id": "ABOUT_011",
+    "keywords": [
+      "ngôn ngữ",
+      "tiếng anh được không",
+      "hỗ trợ ngôn ngữ"
+    ],
+    "question": "Bạn hỗ trợ ngôn ngữ nào?",
+    "answer": "Tôi chủ yếu hỗ trợ tiếng Việt, phù hợp với ngữ cảnh tài chính tại Việt Nam. Bạn cũng có thể đặt câu hỏi bằng tiếng Anh cơ bản."
+  },
+  {
+    "id": "ABOUT_012",
+    "keywords": [
+      "phản hồi",
+      "góp ý",
+      "báo lỗi",
+      "feedback"
+    ],
+    "question": "Tôi muốn góp ý về chatbot",
+    "answer": "Cảm ơn bạn đã muốn góp ý! Phản hồi của bạn rất có giá trị để cải thiện chatbot. Bạn có thể liên hệ đội ngũ phát triển qua kênh hỗ trợ của ứng dụng."
+  },
+  {
+    "id": "FAQ_001",
+    "keywords": [
+      "ngân sách",
+      "budget",
+      "lập ngân sách là gì"
+    ],
+    "question": "Ngân sách cá nhân là gì?",
+    "answer": "Ngân sách cá nhân là kế hoạch phân bổ thu nhập vào các mục đích khác nhau như chi tiêu thiết yếu, giải trí, tiết kiệm và đầu tư — giúp bạn kiểm soát tài chính hiệu quả hơn."
+  },
+  {
+    "id": "FAQ_002",
+    "keywords": [
+      "tại sao lập ngân sách",
+      "lợi ích ngân sách",
+      "cần ngân sách không"
+    ],
+    "question": "Tại sao cần lập ngân sách?",
+    "answer": "Lập ngân sách giúp bạn biết tiền đang đi đâu, tránh thâm hụt, tăng khả năng tiết kiệm và có kế hoạch rõ ràng để đạt các mục tiêu tài chính quan trọng."
+  },
+  {
+    "id": "FAQ_003",
+    "keywords": [
+      "bắt đầu lập ngân sách",
+      "lập ngân sách thế nào",
+      "cách lập ngân sách"
+    ],
+    "question": "Tôi nên bắt đầu lập ngân sách như thế nào?",
+    "answer": "Bắt đầu bằng 3 bước: (1) Ghi lại toàn bộ nguồn thu nhập, (2) Liệt kê tất cả các khoản chi trong 1 tháng, (3) So sánh và điều chỉnh để chi tiêu không vượt thu nhập. Sau đó áp dụng một nguyên tắc phân bổ như 50/30/20."
+  },
+  {
+    "id": "FAQ_004",
+    "keywords": [
+      "ngân sách hàng tuần",
+      "lập ngân sách tuần",
+      "chia theo tuần"
+    ],
+    "question": "Lập ngân sách theo tuần hay tháng tốt hơn?",
+    "answer": "Cả hai đều ổn. Ngân sách tuần giúp kiểm soát chi tiêu chặt hơn trong ngắn hạn, còn ngân sách tháng cho cái nhìn tổng thể hơn. Nhiều người kết hợp cả hai: lập kế hoạch theo tháng, theo dõi theo tuần."
+  },
+  {
+    "id": "FAQ_005",
+    "keywords": [
+      "50/30/20",
+      "nguyên tắc 50 30 20",
+      "quy tắc 50 30 20"
+    ],
+    "question": "Nguyên tắc 50/30/20 là gì?",
+    "answer": "Đây là phương pháp phân bổ thu nhập: 50% cho nhu cầu thiết yếu (nhà ở, ăn uống, đi lại, điện nước), 30% cho nhu cầu cá nhân (giải trí, mua sắm, du lịch), 20% cho tiết kiệm và đầu tư. Nguyên tắc này cho bạn cái nhìn tương đối về việc phân bổ thu nhập, tuy nhiên, tỷ lệ này còn phụ thuộc vào một số yếu tố khác, chẳng hạn như mức thu nhập của bạn."
+  },
+  {
+    "id": "FAQ_006",
+    "keywords": [
+      "50/30/20 có phù hợp không",
+      "có nên áp dụng 50 30 20"
+    ],
+    "question": "Tôi có nên áp dụng nguyên tắc 50/30/20 không?",
+    "answer": "50/30/20 là điểm khởi đầu tốt nhưng không phải công thức cứng nhắc. Bạn có thể điều chỉnh: ở thành phố lớn chi phí thiết yếu có thể lên 60%, hoặc nếu có mục tiêu gấp bạn có thể tăng tiết kiệm lên 30%."
+  },
+  {
+    "id": "FAQ_007",
+    "keywords": [
+      "thu nhập thấp 50/30/20",
+      "lương thấp áp dụng nguyên tắc"
+    ],
+    "question": "Thu nhập thấp thì áp dụng 50/30/20 như thế nào?",
+    "answer": "Khi thu nhập thấp, chi phí thiết yếu có thể chiếm hơn 50%. Ưu tiên cắt giảm nhóm 30% (nhu cầu cá nhân) trước, duy trì tiết kiệm ít nhất 5–10% rồi tăng dần khi thu nhập tăng."
+  },
+  {
+    "id": "FAQ_008",
+    "keywords": [
+      "thu nhập cao 50/30/20",
+      "lương cao nên phân bổ thế nào"
+    ],
+    "question": "Thu nhập cao thì điều chỉnh 50/30/20 thế nào?",
+    "answer": "Khi thu nhập cao, chi phí thiết yếu thường chiếm tỷ lệ thấp hơn 50%. Bạn có thể tăng tỷ lệ tiết kiệm và đầu tư lên 30–40%, đặc biệt nếu bạn có mục tiêu tài chính dài hạn lớn."
+  },
+  {
+    "id": "FAQ_009",
+    "keywords": [
+      "nguyên tắc khác ngoài 50/30/20",
+      "phương pháp thay thế"
+    ],
+    "question": "Có nguyên tắc ngân sách nào khác ngoài 50/30/20 không?",
+    "answer": "Có nhiều phương pháp khác như: Pay Yourself First (trích tiết kiệm trước khi chi tiêu), Zero-Based Budgeting (phân bổ từng đồng), hay quy tắc 70/20/10 (70% chi tiêu, 20% tiết kiệm, 10% đầu tư/từ thiện)."
+  },
+  {
+    "id": "FAQ_010",
+    "keywords": [
+      "tiết kiệm",
+      "saving",
+      "tiết kiệm bao nhiêu",
+      "nên tiết kiệm"
+    ],
+    "question": "Tôi nên tiết kiệm bao nhiêu mỗi tháng?",
+    "answer": "Tối thiểu 10–20% thu nhập là mức khuyến nghị phổ biến. Nếu có mục tiêu cụ thể, bạn cần tính ngược từ số tiền cần và thời hạn để xác định mức cần tiết kiệm hàng tháng."
+  },
+  {
+    "id": "FAQ_011",
+    "keywords": [
+      "khó tiết kiệm",
+      "không tiết kiệm được",
+      "sao khó tiết kiệm vậy"
+    ],
+    "question": "Tôi rất khó tiết kiệm, phải làm sao?",
+    "answer": "Thử phương pháp 'Pay Yourself First': ngay khi nhận lương, chuyển ngay khoản tiết kiệm sang tài khoản riêng trước khi chi tiêu. Bắt đầu với số tiền nhỏ (100–200 nghìn/tuần) và tăng dần theo thời gian."
+  },
+  {
+    "id": "FAQ_012",
+    "keywords": [
+      "tiết kiệm tự động",
+      "gửi tiết kiệm tự động"
+    ],
+    "question": "Tiết kiệm tự động là gì và có nên dùng không?",
+    "answer": "Tiết kiệm tự động là việc cài đặt chuyển khoản định kỳ vào tài khoản tiết kiệm ngay khi nhận lương. Đây là cách hiệu quả vì bạn không cần 'nhớ' tiết kiệm và không bị cám dỗ chi tiêu khoản đó."
+  },
+  {
+    "id": "FAQ_013",
+    "keywords": [
+      "gửi tiết kiệm ngân hàng",
+      "lãi suất tiết kiệm",
+      "gửi ngân hàng"
+    ],
+    "question": "Gửi tiết kiệm ngân hàng có lợi không?",
+    "answer": "Gửi tiết kiệm ngân hàng an toàn và có lãi suất ổn định (thường 4–7%/năm tại Việt Nam). Phù hợp cho quỹ khẩn cấp hoặc mục tiêu ngắn-trung hạn. Tuy nhiên lãi suất có thể thấp hơn lạm phát trong một số giai đoạn."
+  },
+  {
+    "id": "FAQ_014",
+    "keywords": [
+      "tiết kiệm có kỳ hạn",
+      "gửi có kỳ hạn",
+      "tiết kiệm kỳ hạn 6 tháng 12 tháng"
+    ],
+    "question": "Tiết kiệm có kỳ hạn và không kỳ hạn khác nhau thế nào?",
+    "answer": "Tiết kiệm có kỳ hạn (3, 6, 12 tháng) có lãi suất cao hơn nhưng không rút trước hạn được (hoặc mất lãi nếu rút sớm). Tiết kiệm không kỳ hạn linh hoạt hơn nhưng lãi suất thấp. Quỹ khẩn cấp nên để không kỳ hạn, còn tiết kiệm mục tiêu nên có kỳ hạn."
+  },
+  {
+    "id": "FAQ_015",
+    "keywords": [
+      "tiết kiệm hay đầu tư",
+      "đầu tư hay tiết kiệm trước"
+    ],
+    "question": "Tôi nên tiết kiệm hay đầu tư trước?",
+    "answer": "Ưu tiên tiết kiệm trước: xây dựng quỹ khẩn cấp 3–6 tháng chi phí và trả hết nợ lãi suất cao. Sau đó mới bắt đầu đầu tư. Tiết kiệm là nền tảng an toàn, đầu tư giúp tiền sinh lời nhưng có rủi ro."
+  },
+  {
+    "id": "FAQ_016",
+    "keywords": [
+      "quỹ khẩn cấp",
+      "emergency fund",
+      "quỹ dự phòng"
+    ],
+    "question": "Quỹ khẩn cấp là gì?",
+    "answer": "Quỹ khẩn cấp là khoản tiền dự phòng cho các tình huống bất ngờ: mất việc, bệnh tật, sửa xe, sửa nhà... Đây là 'bảo hiểm tự cấp' giúp bạn không phải vay mượn khi có sự cố."
+  },
+  {
+    "id": "FAQ_017",
+    "keywords": [
+      "quỹ khẩn cấp bao nhiêu",
+      "cần bao nhiêu tiền trong quỹ khẩn cấp"
+    ],
+    "question": "Quỹ khẩn cấp cần bao nhiêu tiền?",
+    "answer": "Mức khuyến nghị là tương đương 3–6 tháng chi phí sinh hoạt thiết yếu. Ví dụ: chi 8 triệu/tháng → quỹ khẩn cấp nên đạt 24–48 triệu. Nếu công việc không ổn định, nên có 6 tháng trở lên."
+  },
+  {
+    "id": "FAQ_018",
+    "keywords": [
+      "xây dựng quỹ khẩn cấp",
+      "tạo quỹ khẩn cấp",
+      "làm thế nào có quỹ khẩn cấp"
+    ],
+    "question": "Làm sao xây dựng quỹ khẩn cấp?",
+    "answer": "Trích 5–10% thu nhập mỗi tháng vào tài khoản tiết kiệm riêng chỉ dành cho khẩn cấp. Không dùng cho chi tiêu thường ngày. Mục tiêu đầu tiên: 1 tháng chi phí. Sau đó tăng dần lên 3–6 tháng."
+  },
+  {
+    "id": "FAQ_019",
+    "keywords": [
+      "để quỹ khẩn cấp ở đâu",
+      "cất tiền quỹ khẩn cấp ở đâu"
+    ],
+    "question": "Nên để tiền quỹ khẩn cấp ở đâu?",
+    "answer": "Để ở tài khoản tiết kiệm không kỳ hạn hoặc tài khoản có thể rút bất cứ lúc nào. Ưu tiên: thanh khoản cao, an toàn, lãi suất hợp lý. Không nên đầu tư quỹ khẩn cấp vào cổ phiếu hay tài sản khó rút nhanh."
+  },
+  {
+    "id": "FAQ_020",
+    "keywords": [
+      "có nên dùng quỹ khẩn cấp không",
+      "khi nào dùng quỹ khẩn cấp"
+    ],
+    "question": "Khi nào được phép dùng quỹ khẩn cấp?",
+    "answer": "Chỉ dùng khi có tình huống thực sự khẩn cấp: mất việc đột ngột, chi phí y tế lớn, sửa chữa bắt buộc... Mua sắm giảm giá hay du lịch không phải khẩn cấp. Sau khi dùng, phải bổ sung lại càng sớm càng tốt."
+  },
+  {
+    "id": "FAQ_021",
+    "keywords": [
+      "đã có quỹ khẩn cấp rồi thì sao",
+      "quỹ khẩn cấp đủ rồi"
+    ],
+    "question": "Tôi đã có quỹ khẩn cấp đủ rồi, tiếp theo làm gì?",
+    "answer": "Tuyệt vời! Tiếp theo bạn có thể: (1) Bắt đầu đầu tư phần tiết kiệm vượt mức khẩn cấp, (2) Tập trung vào các mục tiêu tài chính cụ thể, (3) Xem xét đa dạng hóa danh mục tài sản."
+  },
+  {
+    "id": "FAQ_022",
+    "keywords": [
+      "nợ",
+      "debt",
+      "khoản vay",
+      "có nên vay không"
+    ],
+    "question": "Nợ cá nhân là gì và cần chú ý gì?",
+    "answer": "Nợ cá nhân là các khoản vay bạn cần hoàn trả theo thời gian (vay ngân hàng, thẻ tín dụng, vay tiêu dùng...). Cần chú ý: lãi suất, thời hạn vay, khả năng trả hàng tháng và tổng số tiền phải trả."
+  },
+  {
+    "id": "FAQ_023",
+    "keywords": [
+      "vay tiêu dùng",
+      "có nên vay tiêu dùng",
+      "vay tiêu dùng có tốt không"
+    ],
+    "question": "Có nên vay tiêu dùng không?",
+    "answer": "Chỉ vay khi thực sự cần thiết và chắc chắn trả được đúng hạn. So sánh lãi suất nhiều bên, tính tổng số tiền phải trả và đảm bảo khoản trả góp không vượt 30–40% thu nhập hàng tháng."
+  },
+  {
+    "id": "FAQ_024",
+    "keywords": [
+      "thẻ tín dụng",
+      "lãi suất thẻ tín dụng",
+      "dùng thẻ tín dụng có tốt không"
+    ],
+    "question": "Thẻ tín dụng có đáng lo không?",
+    "answer": "Lãi suất thẻ tín dụng tại Việt Nam thường 18–30%/năm — rất cao. Nếu thanh toán đầy đủ dư nợ mỗi tháng, bạn không mất lãi và còn được hoàn tiền/điểm thưởng. Nhưng nếu chỉ trả tối thiểu, nợ sẽ tăng rất nhanh."
+  },
+  {
+    "id": "FAQ_025",
+    "keywords": [
+      "trả nợ hay tiết kiệm trước",
+      "ưu tiên nợ hay tiết kiệm"
+    ],
+    "question": "Nên trả nợ hay tiết kiệm trước?",
+    "answer": "Thông thường: ưu tiên trả nợ lãi suất cao (>10%) trước. Nhưng vẫn nên giữ quỹ khẩn cấp tối thiểu (~1 tháng chi phí) để tránh phải vay lại khi có sự cố. Nợ lãi suất thấp (vay mua nhà ưu đãi) có thể trả song song với tiết kiệm."
+  },
+  {
+    "id": "FAQ_026",
+    "keywords": [
+      "phương pháp trả nợ",
+      "debt avalanche",
+      "debt snowball"
+    ],
+    "question": "Có phương pháp nào để trả nợ hiệu quả không?",
+    "answer": "Có 2 phương pháp phổ biến: (1) Avalanche — trả khoản lãi suất cao nhất trước (tiết kiệm tiền lãi nhiều nhất), (2) Snowball — trả khoản nhỏ nhất trước (tạo động lực tâm lý). Cả hai đều hiệu quả, tùy vào bạn ưu tiên gì hơn."
+  },
+  {
+    "id": "FAQ_027",
+    "keywords": [
+      "nợ xấu",
+      "bị nợ xấu phải làm sao",
+      "xử lý nợ xấu"
+    ],
+    "question": "Tôi bị nợ xấu phải làm gì?",
+    "answer": "Bước 1: Liên hệ ngân hàng để tìm phương án cơ cấu lại nợ. Bước 2: Ưu tiên trả khoản nợ xấu để cải thiện lịch sử tín dụng. Bước 3: Hạn chế vay mới. Cải thiện điểm tín dụng cần thời gian nhưng hoàn toàn có thể làm được."
+  },
+  {
+    "id": "FAQ_028",
+    "keywords": [
+      "vay ngân hàng",
+      "điều kiện vay ngân hàng",
+      "vay tín chấp"
+    ],
+    "question": "Điều kiện để vay ngân hàng là gì?",
+    "answer": "Thường bao gồm: có thu nhập ổn định và có thể chứng minh, lịch sử tín dụng tốt (CIC), đủ tuổi theo quy định (thường 18–65), và đáp ứng tỷ lệ nợ/thu nhập cho phép (thường dưới 50%)."
+  },
+  {
+    "id": "FAQ_029",
+    "keywords": [
+      "mục tiêu tài chính",
+      "financial goal",
+      "đặt mục tiêu tài chính"
+    ],
+    "question": "Mục tiêu tài chính là gì?",
+    "answer": "Mục tiêu tài chính là kế hoạch cụ thể bạn muốn đạt được: ngắn hạn (dưới 1 năm: điện thoại, du lịch), trung hạn (1–5 năm: xe máy, học thêm), dài hạn (trên 5 năm: mua nhà, hưu trí)."
+  },
+  {
+    "id": "FAQ_030",
+    "keywords": [
+      "đặt mục tiêu tài chính thế nào",
+      "cách đặt mục tiêu"
+    ],
+    "question": "Làm thế nào để đặt mục tiêu tài chính hiệu quả?",
+    "answer": "Áp dụng tiêu chí SMART: Specific (cụ thể), Measurable (đo được), Achievable (khả thi), Relevant (phù hợp) và Time-bound (có thời hạn). Ví dụ: 'Tiết kiệm 60 triệu mua xe trong 24 tháng' tốt hơn 'muốn mua xe'."
+  },
+  {
+    "id": "FAQ_031",
+    "keywords": [
+      "mua xe máy bao nhiêu tiền",
+      "tiết kiệm mua xe máy"
+    ],
+    "question": "Cần bao nhiêu tiền để mua xe máy?",
+    "answer": "Xe máy phổ thông mới: 25–45 triệu. Xe tay ga phổ thông: 30–60 triệu. Xe số nhập khẩu, xe phân khối lớn: 80 triệu trở lên. Bạn có thể mua xe cũ với giá thấp hơn 30–50% để tiết kiệm chi phí ban đầu."
+  },
+  {
+    "id": "FAQ_032",
+    "keywords": [
+      "mua nhà cần bao nhiêu tiền",
+      "tiết kiệm mua nhà",
+      "vốn mua nhà"
+    ],
+    "question": "Cần chuẩn bị gì để mua nhà?",
+    "answer": "Để mua nhà: (1) Tích lũy ít nhất 20–30% giá trị bất động sản làm vốn tự có, (2) Đảm bảo khoản trả góp không vượt 30–40% thu nhập, (3) Duy trì điểm tín dụng tốt, (4) Lưu ý thêm các chi phí phát sinh (thuế, phí công chứng, sửa chữa...)."
+  },
+  {
+    "id": "FAQ_033",
+    "keywords": [
+      "mua nhà hay thuê nhà",
+      "thuê hay mua"
+    ],
+    "question": "Nên mua nhà hay thuê nhà?",
+    "answer": "Tùy hoàn cảnh. Mua nhà phù hợp khi bạn định cư lâu dài, có đủ vốn và thu nhập ổn định. Thuê nhà linh hoạt hơn, phù hợp khi còn trẻ, chưa chắc chắn nơi ở lâu dài, hoặc chưa đủ vốn mua. Không nhất thiết phải mua nhà bằng mọi giá."
+  },
+  {
+    "id": "FAQ_034",
+    "keywords": [
+      "du học cần bao nhiêu tiền",
+      "chi phí du học",
+      "tiết kiệm du học"
+    ],
+    "question": "Chi phí du học thường là bao nhiêu?",
+    "answer": "Chi phí du học rất khác nhau theo quốc gia và chương trình. Nhật Bản: 200–400 triệu/năm. Úc, Canada: 400–800 triệu/năm. Mỹ: 600 triệu – 1,2 tỷ/năm. Nên tính cả học phí, sinh hoạt phí, bảo hiểm và chi phí phát sinh."
+  },
+  {
+    "id": "FAQ_035",
+    "keywords": [
+      "hưu trí",
+      "quỹ hưu trí",
+      "tiết kiệm hưu trí"
+    ],
+    "question": "Tôi nên chuẩn bị hưu trí từ khi nào?",
+    "answer": "Càng sớm càng tốt nhờ lãi kép. Nếu bắt đầu tiết kiệm cho hưu trí từ 25 tuổi, bạn chỉ cần tiết kiệm khoảng 1/3 số tiền so với người bắt đầu lúc 35 tuổi để đạt cùng mục tiêu."
+  },
+  {
+    "id": "FAQ_036",
+    "keywords": [
+      "đi du lịch tốn bao nhiêu",
+      "tiết kiệm đi du lịch",
+      "ngân sách du lịch"
+    ],
+    "question": "Tôi nên lập ngân sách du lịch thế nào?",
+    "answer": "Xác định điểm đến và thời gian, ước tính chi phí vé máy bay, lưu trú, ăn uống và tham quan. Thêm 10–15% dự phòng. Bắt đầu tiết kiệm ít nhất 3–6 tháng trước để tránh phải vay tiền du lịch."
+  },
+  {
+    "id": "FAQ_037",
+    "keywords": [
+      "đầu tư",
+      "bắt đầu đầu tư",
+      "đầu tư là gì"
+    ],
+    "question": "Đầu tư là gì và nên bắt đầu từ đâu?",
+    "answer": "Đầu tư là dùng tiền để tạo ra lợi nhuận theo thời gian. Bắt đầu bằng cách: (1) Đã có quỹ khẩn cấp, (2) Không có nợ lãi suất cao, (3) Tìm hiểu kỹ kênh đầu tư trước khi bỏ tiền, (4) Bắt đầu với số tiền nhỏ để học hỏi."
+  },
+  {
+    "id": "FAQ_038",
+    "keywords": [
+      "lãi kép",
+      "compound interest",
+      "lãi kép là gì"
+    ],
+    "question": "Lãi kép là gì và tại sao quan trọng?",
+    "answer": "Lãi kép là lãi sinh ra từ cả gốc lẫn lãi đã tích lũy trước đó. Ví dụ: 10 triệu gửi 10 năm với lãi suất 7%/năm sẽ tăng lên ~19,7 triệu — gần gấp đôi. Đây là lý do đầu tư sớm rất quan trọng."
+  },
+  {
+    "id": "FAQ_039",
+    "keywords": [
+      "cổ phiếu",
+      "đầu tư chứng khoán",
+      "mua cổ phiếu"
+    ],
+    "question": "Đầu tư chứng khoán có rủi ro không?",
+    "answer": "Có, đây là kênh đầu tư có rủi ro cao hơn gửi tiết kiệm. Giá cổ phiếu có thể biến động mạnh trong ngắn hạn. Tuy nhiên, lịch sử cho thấy chứng khoán mang lại lợi suất tốt trong dài hạn (10+ năm) nếu đầu tư đúng cách."
+  },
+  {
+    "id": "FAQ_040",
+    "keywords": [
+      "vàng",
+      "đầu tư vàng",
+      "mua vàng có lợi không"
+    ],
+    "question": "Có nên đầu tư vàng không?",
+    "answer": "Vàng là tài sản trú ẩn an toàn trong bất ổn kinh tế, giúp bảo toàn giá trị theo thời gian. Tuy nhiên vàng không sinh ra dòng tiền (cổ tức, lãi suất). Phù hợp để đa dạng hóa, không nên đặt toàn bộ tài sản vào vàng."
+  },
+  {
+    "id": "FAQ_041",
+    "keywords": [
+      "quỹ đầu tư",
+      "quỹ mở",
+      "ETF"
+    ],
+    "question": "Quỹ đầu tư là gì?",
+    "answer": "Quỹ đầu tư tập hợp tiền của nhiều nhà đầu tư để mua danh mục tài sản đa dạng (cổ phiếu, trái phiếu...) dưới sự quản lý của chuyên gia. Ưu điểm: đa dạng hóa rủi ro, không cần nhiều kiến thức chuyên sâu, có thể bắt đầu với số tiền nhỏ."
+  },
+  {
+    "id": "FAQ_042",
+    "keywords": [
+      "bất động sản",
+      "đầu tư bất động sản"
+    ],
+    "question": "Đầu tư bất động sản có phù hợp với tôi không?",
+    "answer": "Bất động sản cần vốn lớn (ít nhất vài trăm triệu), thanh khoản thấp (khó bán nhanh) và chi phí duy trì. Phù hợp khi bạn có nguồn vốn đủ lớn, đã có các tài sản cơ bản khác và hiểu rõ thị trường địa phương."
+  },
+  {
+    "id": "FAQ_043",
+    "keywords": [
+      "đa dạng hóa đầu tư",
+      "không bỏ hết trứng một giỏ"
+    ],
+    "question": "Tại sao cần đa dạng hóa đầu tư?",
+    "answer": "Đa dạng hóa giúp giảm rủi ro: khi một kênh giảm, các kênh khác có thể bù đắp. Ví dụ: không nên đặt toàn bộ tiền vào một cổ phiếu hay một loại tài sản. Phân bổ hợp lý theo mục tiêu và khả năng chịu rủi ro của bạn."
+  },
+  {
+    "id": "FAQ_044",
+    "keywords": [
+      "theo dõi chi tiêu",
+      "ghi chép chi tiêu",
+      "quản lý chi tiêu"
+    ],
+    "question": "Tại sao cần theo dõi chi tiêu?",
+    "answer": "Theo dõi chi tiêu giúp bạn biết tiền đi đâu, phát hiện các khoản lãng phí và điều chỉnh ngân sách kịp thời. Chỉ cần ghi lại 1 tháng, bạn sẽ thấy rõ nhiều điểm có thể tối ưu."
+  },
+  {
+    "id": "FAQ_045",
+    "keywords": [
+      "chi tiêu quá nhiều",
+      "chi tiêu vượt thu nhập",
+      "đang bội chi"
+    ],
+    "question": "Làm sao biết tôi đang chi tiêu quá mức?",
+    "answer": "Dấu hiệu cần chú ý: (1) Không tiết kiệm được dù có thu nhập, (2) Thường xuyên vay mượn để trang trải sinh hoạt hàng tháng, (3) Chi phí cố định chiếm hơn 60–70% thu nhập, (4) Hết tiền trước cuối tháng."
+  },
+  {
+    "id": "FAQ_046",
+    "keywords": [
+      "cắt giảm chi tiêu",
+      "tiết kiệm hơn",
+      "chi tiêu ít hơn"
+    ],
+    "question": "Làm sao cắt giảm chi tiêu hiệu quả?",
+    "answer": "Các bước: (1) Xem lại danh sách chi tiêu 1 tháng, (2) Phân loại: thiết yếu vs tùy ý, (3) Tìm 2–3 khoản tùy ý có thể cắt giảm ngay, (4) Hủy các đăng ký dịch vụ không dùng, (5) Nấu ăn tại nhà nhiều hơn."
+  },
+  {
+    "id": "FAQ_047",
+    "keywords": [
+      "chi tiêu bốc đồng",
+      "mua sắm bốc đồng",
+      "impulse buying"
+    ],
+    "question": "Làm sao tránh chi tiêu bốc đồng?",
+    "answer": "Áp dụng quy tắc '24 giờ' hoặc '30 ngày': trước khi mua thứ gì không thiết yếu, chờ 24 giờ (hoặc 30 ngày với hàng đắt tiền). Thường thì cơn thèm muốn sẽ qua đi và bạn nhận ra không thực sự cần mua."
+  },
+  {
+    "id": "FAQ_048",
+    "keywords": [
+      "chi phí ẩn",
+      "khoản chi bị quên",
+      "phí ngầm"
+    ],
+    "question": "Các chi phí ẩn thường gặp là gì?",
+    "answer": "Chi phí hay bị bỏ quên: phí duy trì tài khoản ngân hàng, đăng ký app/dịch vụ tự động gia hạn, phí bảo trì xe, quà tặng lễ tết, chi phí y tế nhỏ, phí giao dịch... Hãy lập danh sách đầy đủ khi làm ngân sách."
+  },
+  {
+    "id": "FAQ_049",
+    "keywords": [
+      "ăn ngoài hay nấu ăn",
+      "so sánh chi phí ăn uống"
+    ],
+    "question": "Ăn ngoài hay nấu ăn tại nhà tiết kiệm hơn?",
+    "answer": "Nấu ăn tại nhà thường tiết kiệm 30–50% so với ăn ngoài thường xuyên. Với một người ở TP.HCM, ăn ngoài 3 bữa/ngày có thể tốn 2–4 triệu/tháng, trong khi nấu ăn chỉ tốn 800k–1,5 triệu. Nấu ăn 1–2 bữa/ngày là sự cân bằng tốt."
+  },
+  {
+    "id": "FAQ_050",
+    "keywords": [
+      "mua sắm thông minh",
+      "mua hàng tiết kiệm",
+      "deal tốt"
+    ],
+    "question": "Làm sao mua sắm thông minh hơn?",
+    "answer": "Một số mẹo: (1) Lập danh sách trước khi đi mua, (2) So sánh giá trên nhiều nền tảng, (3) Chờ sale định kỳ với hàng không gấp, (4) Mua số lượng lớn với hàng tiêu dùng lâu dài, (5) Phân biệt 'cần' và 'muốn'."
+  },
+  {
+    "id": "FAQ_051",
+    "keywords": [
+      "tài chính sinh viên",
+      "sinh viên quản lý tiền",
+      "sinh viên tiết kiệm"
+    ],
+    "question": "Sinh viên nên quản lý tài chính thế nào?",
+    "answer": "Với sinh viên: (1) Theo dõi chi tiêu từng ngày trong 1 tháng để biết tiền đi đâu, (2) Đặt mức chi tiêu tối đa theo tuần, (3) Tìm nguồn thu nhập thêm (gia sư, làm thêm), (4) Tiết kiệm dù chỉ 5–10% học bổng/trợ cấp để xây thói quen."
+  },
+  {
+    "id": "FAQ_052",
+    "keywords": [
+      "người mới đi làm tháng lương đầu",
+      "lương đầu tiên nên làm gì"
+    ],
+    "question": "Người mới đi làm nên làm gì với tháng lương đầu?",
+    "answer": "Gợi ý cho tháng lương đầu: (1) Trích 20% vào tiết kiệm ngay khi nhận lương, (2) Dành 1–2 tháng ghi chép chi tiêu thực tế để hiểu thói quen của mình, (3) Bắt đầu xây quỹ khẩn cấp, (4) Tránh nâng cao lối sống quá nhanh."
+  },
+  {
+    "id": "FAQ_053",
+    "keywords": [
+      "freelancer quản lý tài chính",
+      "thu nhập không ổn định",
+      "tự kinh doanh"
+    ],
+    "question": "Freelancer nên quản lý tài chính thế nào?",
+    "answer": "Thu nhập không đều nên freelancer cần: (1) Xác định chi phí cố định tối thiểu hàng tháng, (2) Xây quỹ khẩn cấp lớn hơn bình thường (6–12 tháng), (3) Tiết kiệm nhiều hơn trong tháng thu nhập cao, (4) Tách tài khoản kinh doanh và cá nhân."
+  },
+  {
+    "id": "FAQ_054",
+    "keywords": [
+      "người có con nhỏ tài chính",
+      "cha mẹ quản lý tiền",
+      "chi phí nuôi con"
+    ],
+    "question": "Chi phí nuôi con thường là bao nhiêu?",
+    "answer": "Chi phí nuôi con ở Việt Nam (TP.HCM) thường dao động: sơ sinh 3–8 triệu/tháng (sữa, tã, bác sĩ), mầm non 5–15 triệu/tháng (học phí + phụ phí). Cần lập quỹ riêng cho giáo dục và y tế của con từ sớm."
+  },
+  {
+    "id": "FAQ_055",
+    "keywords": [
+      "vợ chồng quản lý tiền chung",
+      "tài chính hôn nhân",
+      "tiền chung tiền riêng"
+    ],
+    "question": "Vợ chồng nên quản lý tài chính chung thế nào?",
+    "answer": "Có nhiều mô hình: (1) Gộp hoàn toàn — tất cả thu nhập vào tài khoản chung, (2) Tách hoàn toàn — mỗi người góp một phần chi phí chung, (3) Hỗn hợp — tài khoản chung cho chi phí gia đình, tài khoản riêng cho chi tiêu cá nhân. Mô hình 3 thường hiệu quả nhất."
+  },
+  {
+    "id": "FAQ_056",
+    "keywords": [
+      "chi phí sống TP.HCM",
+      "sống ở Sài Gòn tốn bao nhiêu",
+      "mức sống TP.HCM"
+    ],
+    "question": "Chi phí sinh hoạt ở TP.HCM là bao nhiêu?",
+    "answer": "Người độc thân ở TP.HCM cần khoảng 8–15 triệu/tháng cho nhu cầu cơ bản: thuê phòng trọ (2–5 triệu), ăn uống (2–4 triệu), đi lại (500k–1 triệu), điện nước internet (300–600k). Chi phí thực tế tùy quận và lối sống."
+  },
+  {
+    "id": "FAQ_057",
+    "keywords": [
+      "chi phí sống Hà Nội",
+      "sống Hà Nội tốn bao nhiêu"
+    ],
+    "question": "Chi phí sinh hoạt ở Hà Nội là bao nhiêu?",
+    "answer": "Người độc thân ở Hà Nội cần khoảng 7–13 triệu/tháng: thuê phòng (2–4,5 triệu), ăn uống (2–3,5 triệu), đi lại (500k–1 triệu), điện nước internet (300–600k). Chi phí có xu hướng tương đương TP.HCM tại khu vực trung tâm."
+  },
+  {
+    "id": "FAQ_058",
+    "keywords": [
+      "chi phí sống tỉnh lẻ",
+      "sống ở tỉnh",
+      "chi phí tỉnh nhỏ"
+    ],
+    "question": "Sống ở tỉnh nhỏ chi phí như thế nào?",
+    "answer": "Tỉnh nhỏ thường có chi phí thấp hơn 30–50% so với TP.HCM và Hà Nội. Thuê phòng từ 1–2,5 triệu, ăn uống 1–2,5 triệu. Tuy nhiên cơ hội việc làm và thu nhập cũng có thể thấp hơn."
+  },
+  {
+    "id": "FAQ_059",
+    "keywords": [
+      "lạm phát",
+      "tiền mất giá",
+      "lạm phát ảnh hưởng gì"
+    ],
+    "question": "Lạm phát ảnh hưởng đến tài chính cá nhân thế nào?",
+    "answer": "Khi lạm phát cao hơn lãi suất tiết kiệm, tiền của bạn thực chất mất giá theo thời gian. Ví dụ: lạm phát 6%/năm, gửi tiết kiệm 5%/năm → bạn thực tế mất 1%/năm. Cần xem xét đầu tư vào tài sản có lợi suất vượt lạm phát."
+  },
+  {
+    "id": "FAQ_060",
+    "keywords": [
+      "bảo hiểm",
+      "mua bảo hiểm",
+      "bảo hiểm sức khỏe"
+    ],
+    "question": "Bảo hiểm quan trọng như thế nào trong kế hoạch tài chính?",
+    "answer": "Bảo hiểm là nền tảng bảo vệ tài chính. Một ca bệnh nặng không có bảo hiểm có thể xóa sạch tiết kiệm nhiều năm. Tối thiểu nên có bảo hiểm sức khỏe. Bảo hiểm nhân thọ quan trọng khi bạn có người phụ thuộc (con nhỏ, bố mẹ già)."
+  },
+  {
+    "id": "FAQ_061",
+    "keywords": [
+      "điểm tín dụng",
+      "CIC",
+      "lịch sử tín dụng"
+    ],
+    "question": "Điểm tín dụng là gì và tại sao quan trọng?",
+    "answer": "Điểm tín dụng (CIC tại Việt Nam) phản ánh lịch sử vay và trả nợ của bạn. Điểm tốt giúp bạn dễ vay ngân hàng với lãi suất thấp hơn. Cách cải thiện: trả nợ đúng hạn, không để nợ quá hạn, hạn chế vay nhiều khoản cùng lúc."
+  },
+  {
+    "id": "FAQ_062",
+    "keywords": [
+      "thuế thu nhập cá nhân",
+      "thuế TNCN",
+      "khai thuế"
+    ],
+    "question": "Tôi cần nộp thuế thu nhập cá nhân không?",
+    "answer": "Tại Việt Nam, nếu thu nhập trên 11 triệu/tháng (sau khi trừ các khoản giảm trừ), bạn cần nộp thuế TNCN. Mức giảm trừ gia cảnh cho bản thân là 11 triệu/tháng, cho mỗi người phụ thuộc là 4,4 triệu/tháng."
+  },
+  {
+    "id": "FAQ_063",
+    "keywords": [
+      "zero based budgeting",
+      "ngân sách không dư",
+      "mỗi đồng có nhiệm vụ"
+    ],
+    "question": "Zero-based budgeting là gì?",
+    "answer": "Zero-based budgeting là phương pháp phân bổ toàn bộ thu nhập vào các mục cụ thể sao cho Thu nhập – Tất cả các khoản chi (kể cả tiết kiệm) = 0. Mỗi đồng đều có 'nhiệm vụ'. Giúp loại bỏ chi tiêu không có kế hoạch."
+  },
+  {
+    "id": "FAQ_064",
+    "keywords": [
+      "pay yourself first",
+      "trả bản thân trước"
+    ],
+    "question": "Pay Yourself First là gì?",
+    "answer": "Đây là nguyên tắc 'trả cho bản thân trước': ngay khi nhận lương, chuyển khoản tiết kiệm trước, sau đó mới dùng phần còn lại để chi tiêu. Đảo ngược so với cách thông thường (chi tiêu xong mới tiết kiệm phần dư — thường là không còn gì để tiết kiệm)."
+  },
+  {
+    "id": "FAQ_065",
+    "keywords": [
+      "chi phí cơ hội",
+      "opportunity cost"
+    ],
+    "question": "Chi phí cơ hội là gì?",
+    "answer": "Chi phí cơ hội là giá trị của lựa chọn tốt nhất mà bạn bỏ qua khi đưa ra quyết định. Ví dụ: dùng 100 triệu mua xe thay vì đầu tư — chi phí cơ hội là lợi nhuận đầu tư tiềm năng trong 5–10 năm tới."
+  },
+  {
+    "id": "FAQ_066",
+    "keywords": [
+      "net worth",
+      "tài sản ròng",
+      "tổng tài sản"
+    ],
+    "question": "Tài sản ròng (net worth) là gì?",
+    "answer": "Tài sản ròng = Tổng tài sản (tiền mặt, bất động sản, đầu tư...) – Tổng nợ. Đây là chỉ số quan trọng đo lường sức khỏe tài chính tổng thể. Mục tiêu là tăng dần tài sản ròng theo thời gian."
+  },
+  {
+    "id": "FAQ_067",
+    "keywords": [
+      "tỷ lệ nợ trên thu nhập",
+      "debt to income ratio"
+    ],
+    "question": "Tỷ lệ nợ/thu nhập là gì và bao nhiêu là an toàn?",
+    "answer": "Tỷ lệ nợ/thu nhập = Tổng khoản trả nợ hàng tháng / Thu nhập hàng tháng. Dưới 36% được coi là lành mạnh. Trên 50% là nguy hiểm vì hầu như không còn khả năng tiết kiệm hay xử lý chi phí bất ngờ."
+  },
+  {
+    "id": "FAQ_068",
+    "keywords": [
+      "kiếm thêm thu nhập",
+      "tăng thu nhập",
+      "thu nhập thụ động"
+    ],
+    "question": "Làm sao tăng thu nhập cá nhân?",
+    "answer": "Một số cách: (1) Nâng cao kỹ năng để tăng lương hoặc đổi việc tốt hơn, (2) Làm thêm/freelance trong giờ rảnh, (3) Bán đồ không dùng đến, (4) Đầu tư để tạo thu nhập thụ động. Tăng thu nhập kết hợp kiểm soát chi tiêu là công thức hiệu quả nhất."
+  },
+  {
+    "id": "INFO_001",
+    "keywords": [
+      "đánh giá tài chính",
+      "kiểm tra tài chính",
+      "bắt đầu đánh giá",
+      "muốn đánh giá"
+    ],
+    "question": "Tôi muốn đánh giá tình hình tài chính",
+    "answer": "Để đánh giá chính xác, tôi sẽ hỏi bạn một số câu hỏi ngắn. Bắt đầu nhé: Thu nhập trung bình hàng tháng của bạn là bao nhiêu (sau thuế, bao gồm tất cả nguồn thu)?"
+  },
+  {
+    "id": "INFO_002",
+    "keywords": [
+      "thu nhập",
+      "income",
+      "lương tháng",
+      "thu nhập bao nhiêu"
+    ],
+    "question": "Thu nhập hàng tháng của tôi là ...",
+    "answer": "Cảm ơn bạn! Tiếp theo: Tổng chi tiêu cố định hàng tháng của bạn là bao nhiêu? (tiền thuê nhà/trả góp nhà, điện nước, internet, học phí, bảo hiểm, trả nợ định kỳ...)"
+  },
+  {
+    "id": "INFO_003",
+    "keywords": [
+      "chi tiêu cố định",
+      "fixed expense",
+      "chi phí cố định",
+      "nhà điện nước"
+    ],
+    "question": "Chi tiêu cố định của tôi là ...",
+    "answer": "Đã ghi nhận. Chi tiêu biến đổi hàng tháng của bạn là bao nhiêu? (ăn uống, đi lại linh hoạt, mua sắm, giải trí, cà phê, chi phí phát sinh...)"
+  },
+  {
+    "id": "INFO_004",
+    "keywords": [
+      "chi tiêu biến đổi",
+      "variable expense",
+      "ăn uống mua sắm giải trí"
+    ],
+    "question": "Chi tiêu biến đổi của tôi là ...",
+    "answer": "Đã ghi nhận. Hiện tại bạn đang có tổng cộng bao nhiêu tiền tiết kiệm (tất cả các tài khoản, kể cả tiền mặt)?"
+  },
+  {
+    "id": "INFO_005",
+    "keywords": [
+      "tiết kiệm hiện có",
+      "savings",
+      "tiết kiệm đang có"
+    ],
+    "question": "Tôi đang có ... tiền tiết kiệm",
+    "answer": "Trong số tiền tiết kiệm đó, bạn có khoản nào dành riêng làm quỹ khẩn cấp không? Nếu có, số tiền là bao nhiêu?"
+  },
+  {
+    "id": "INFO_006",
+    "keywords": [
+      "quỹ khẩn cấp hiện có",
+      "emergency fund đang có"
+    ],
+    "question": "Quỹ khẩn cấp của tôi là ...",
+    "answer": "Đã ghi nhận. Bạn hiện có khoản nợ nào không? (vay ngân hàng, thẻ tín dụng dư nợ, vay bạn bè...) Nếu có, tổng nợ khoảng bao nhiêu và lãi suất xấp xỉ là bao nhiêu?"
+  },
+  {
+    "id": "INFO_007",
+    "keywords": [
+      "nợ",
+      "debt",
+      "loan",
+      "vay",
+      "đang nợ",
+      "không có nợ"
+    ],
+    "question": "Thông tin về nợ của tôi",
+    "answer": "Cảm ơn. Mục tiêu tài chính lớn nhất bạn đang hướng đến là gì? (ví dụ: mua xe, mua nhà, du học, lập quỹ hưu trí, đi du lịch, mua thiết bị...)"
+  },
+  {
+    "id": "INFO_008",
+    "keywords": [
+      "mục tiêu tài chính",
+      "financial goal",
+      "muốn mua gì",
+      "mục tiêu"
+    ],
+    "question": "Mục tiêu tài chính của tôi là ...",
+    "answer": "Bạn muốn đạt mục tiêu này trong khoảng thời gian bao lâu? (ví dụ: 6 tháng, 1 năm, 2 năm, 5 năm...)"
+  },
+  {
+    "id": "INFO_009",
+    "keywords": [
+      "thời gian mục tiêu",
+      "deadline",
+      "bao lâu",
+      "bao nhiêu năm"
+    ],
+    "question": "Tôi muốn đạt mục tiêu trong ...",
+    "answer": "Số tiền bạn cần để đạt mục tiêu đó là bao nhiêu? (nếu chưa chắc, có thể ước tính)"
+  },
+  {
+    "id": "INFO_010",
+    "keywords": [
+      "số tiền mục tiêu",
+      "giá trị mục tiêu",
+      "cần bao nhiêu tiền"
+    ],
+    "question": "Số tiền mục tiêu của tôi là ...",
+    "answer": "Gần xong rồi! Bạn hiện đang sinh sống và làm việc tại thành phố hoặc khu vực nào?"
+  },
+  {
+    "id": "INFO_011",
+    "keywords": [
+      "thành phố",
+      "nơi ở",
+      "khu vực",
+      "sống ở đâu",
+      "địa điểm"
+    ],
+    "question": "Tôi đang sống ở ...",
+    "answer": "Cảm ơn bạn đã cung cấp đầy đủ thông tin. Tôi sẽ phân tích và đưa ra kết quả đánh giá ngay bây giờ."
+  },
+  {
+    "id": "INFO_012",
+    "keywords": [
+      "không biết thu nhập",
+      "thu nhập không cố định",
+      "lương thay đổi"
+    ],
+    "question": "Thu nhập của tôi không cố định",
+    "answer": "Không sao! Bạn có thể ước tính thu nhập trung bình 3 tháng gần nhất là bao nhiêu? Hoặc cho tôi biết mức thu nhập thấp nhất và cao nhất trong một tháng thông thường."
+  },
+  {
+    "id": "INFO_013",
+    "keywords": [
+      "không biết chi tiêu bao nhiêu",
+      "chưa theo dõi chi tiêu"
+    ],
+    "question": "Tôi chưa theo dõi chi tiêu nên không biết chính xác",
+    "answer": "Không sao! Hãy ước tính: một tháng bạn thường tiêu khoảng bao nhiêu cho nhà ở, ăn uống và đi lại? Chỉ cần con số gần đúng là tôi có thể đưa ra đánh giá sơ bộ."
+  },
+  {
+    "id": "INFO_014",
+    "keywords": [
+      "không có tiết kiệm",
+      "chưa có tiết kiệm",
+      "tiết kiệm bằng 0"
+    ],
+    "question": "Tôi chưa có tiết kiệm gì cả",
+    "answer": "Đã ghi nhận — không có tiết kiệm. Điều đó có nghĩa là quỹ khẩn cấp cũng bằng 0, đúng không? Tôi sẽ ghi nhận và tiếp tục. Hiện bạn có khoản nợ nào không?"
+  },
+  {
+    "id": "INFO_015",
+    "keywords": [
+      "không có mục tiêu",
+      "chưa có mục tiêu tài chính"
+    ],
+    "question": "Tôi chưa có mục tiêu tài chính cụ thể",
+    "answer": "Không sao! Tôi vẫn có thể đánh giá tình hình tài chính hiện tại và đưa ra khuyến nghị cải thiện chung. Bạn sống ở thành phố nào để tôi tham chiếu chi phí sinh hoạt phù hợp?"
+  },
+  {
+    "id": "RCM_001",
+    "keywords": [
+      "tài chính tốt",
+      "sức khỏe tài chính tốt",
+      "đang ổn định"
+    ],
+    "question": "Tình hình tài chính của tôi tốt không?",
+    "answer": "Dựa trên thông tin bạn cung cấp, bạn đang có nền tảng tài chính ổn định: tỷ lệ chi tiêu hợp lý, có tiết kiệm và không có nợ xấu. Hãy tiếp tục duy trì kỷ luật và đặt mục tiêu tài chính dài hạn hơn."
+  },
+  {
+    "id": "RCM_002",
+    "keywords": [
+      "tiếp theo sau khi ổn định",
+      "tôi đang ổn rồi làm gì tiếp"
+    ],
+    "question": "Tài chính đã ổn, tôi nên làm gì tiếp theo?",
+    "answer": "Tuyệt vời! Các bước tiếp theo: (1) Tăng tỷ lệ tiết kiệm/đầu tư lên 25–30%, (2) Bắt đầu tìm hiểu các kênh đầu tư phù hợp, (3) Lập kế hoạch cho mục tiêu lớn hơn (mua nhà, hưu trí), (4) Cân nhắc mua bảo hiểm đầy đủ."
+  },
+  {
+    "id": "RCM_003",
+    "keywords": [
+      "tiết kiệm ít",
+      "tỷ lệ tiết kiệm thấp",
+      "không tiết kiệm được"
+    ],
+    "question": "Tỷ lệ tiết kiệm của tôi đang thấp",
+    "answer": "Tỷ lệ tiết kiệm dưới 10% là mức cần cải thiện. Thử áp dụng 'Pay Yourself First': chuyển ngay 10% lương vào tài khoản tiết kiệm riêng trước khi chi tiêu bất cứ thứ gì."
+  },
+  {
+    "id": "RCM_004",
+    "keywords": [
+      "hoàn toàn không tiết kiệm được",
+      "tiết kiệm bằng 0"
+    ],
+    "question": "Tôi hoàn toàn không tiết kiệm được gì",
+    "answer": "Đây là tình huống cần xử lý ngay. Bước đầu: xem lại toàn bộ chi tiêu tháng trước, tìm 2–3 khoản có thể cắt giảm ngay (đăng ký dịch vụ không dùng, ăn ngoài, mua sắm tùy ý). Mục tiêu đầu tiên: tiết kiệm được 500k–1 triệu/tháng."
+  },
+  {
+    "id": "RCM_005",
+    "keywords": [
+      "tiết kiệm tốt",
+      "đang tiết kiệm tốt",
+      "tỷ lệ tiết kiệm cao"
+    ],
+    "question": "Tôi đang tiết kiệm được hơn 20% thu nhập",
+    "answer": "Bạn đang tiết kiệm ở mức rất tốt! Hãy cân nhắc đưa phần tiết kiệm vượt mức quỹ khẩn cấp vào các kênh đầu tư có lợi suất tốt hơn để tiền sinh lời thay vì để yên trong tài khoản."
+  },
+  {
+    "id": "RCM_006",
+    "keywords": [
+      "quỹ khẩn cấp chưa đủ",
+      "thiếu quỹ khẩn cấp",
+      "quỹ dự phòng thấp"
+    ],
+    "question": "Quỹ khẩn cấp của tôi chưa đủ",
+    "answer": "Mục tiêu đầu tiên: tích lũy đủ 3 tháng chi phí thiết yếu. Trích 5–10% thu nhập mỗi tháng vào tài khoản tiết kiệm riêng chỉ dành cho khẩn cấp, không động đến cho mục đích khác."
+  },
+  {
+    "id": "RCM_007",
+    "keywords": [
+      "chưa có quỹ khẩn cấp",
+      "không có quỹ dự phòng"
+    ],
+    "question": "Tôi chưa có quỹ khẩn cấp gì cả",
+    "answer": "Đây là ưu tiên số 1 cần xây dựng ngay. Bắt đầu bằng mục tiêu nhỏ: tiết kiệm 1 tháng chi phí. Ngay cả khi còn nợ, vẫn nên có quỹ khẩn cấp tối thiểu để không phải vay thêm khi có sự cố."
+  },
+  {
+    "id": "RCM_008",
+    "keywords": [
+      "quỹ khẩn cấp đã đủ",
+      "đã có quỹ khẩn cấp đủ 3 tháng"
+    ],
+    "question": "Quỹ khẩn cấp của tôi đã đạt 3–6 tháng chi phí",
+    "answer": "Tuyệt vời! Quỹ khẩn cấp của bạn ở mức an toàn. Giờ bạn có thể chuyển trọng tâm sang tiết kiệm cho các mục tiêu cụ thể hoặc bắt đầu đầu tư."
+  },
+  {
+    "id": "RCM_009",
+    "keywords": [
+      "có nợ",
+      "đang nợ ngân hàng",
+      "khoản vay lớn"
+    ],
+    "question": "Tôi đang có nợ",
+    "answer": "Bạn nên: (1) Liệt kê tất cả khoản nợ với lãi suất tương ứng, (2) Ưu tiên trả khoản lãi suất cao nhất trước (Avalanche), (3) Không vay thêm cho đến khi trả bớt nợ cũ, (4) Vẫn duy trì quỹ khẩn cấp tối thiểu 1 tháng chi phí."
+  },
+  {
+    "id": "RCM_010",
+    "keywords": [
+      "nợ thẻ tín dụng",
+      "dư nợ thẻ tín dụng nhiều"
+    ],
+    "question": "Tôi đang có dư nợ thẻ tín dụng cao",
+    "answer": "Dư nợ thẻ tín dụng với lãi 18–30%/năm là khoản nợ cần xử lý khẩn cấp nhất. Ưu tiên trả hết thẻ này trước tất cả các khoản khác. Nếu không đủ tiền trả toàn bộ, hãy trả tối đa có thể mỗi tháng."
+  },
+  {
+    "id": "RCM_011",
+    "keywords": [
+      "nợ vay tiêu dùng",
+      "lãi suất vay tiêu dùng cao"
+    ],
+    "question": "Tôi đang vay tiêu dùng lãi suất cao",
+    "answer": "Vay tiêu dùng lãi suất cao (trên 15%/năm) cần ưu tiên trả nhanh. Kiểm tra xem có thể tái cơ cấu sang khoản vay lãi suất thấp hơn không (vay ngân hàng thương mại, thay vì công ty tài chính)."
+  },
+  {
+    "id": "RCM_012",
+    "keywords": [
+      "không có nợ",
+      "tôi không nợ ai"
+    ],
+    "question": "Tôi không có khoản nợ nào",
+    "answer": "Đây là lợi thế lớn! Không có nợ nghĩa là toàn bộ thu nhập của bạn có thể tập trung vào tiết kiệm và đầu tư cho các mục tiêu tương lai."
+  },
+  {
+    "id": "RCM_013",
+    "keywords": [
+      "chi tiêu vượt thu nhập",
+      "thâm hụt",
+      "âm tiền",
+      "bội chi"
+    ],
+    "question": "Chi tiêu của tôi đang vượt thu nhập",
+    "answer": "Cần xử lý ngay: (1) Dừng các khoản chi tùy ý không thiết yếu, (2) Xem lại từng khoản cố định có thể cắt giảm (gói cước, đăng ký dịch vụ...), (3) Tránh dùng thẻ tín dụng hoặc vay để bù đắp thâm hụt, (4) Tìm cách tăng thu nhập song song."
+  },
+  {
+    "id": "RCM_014",
+    "keywords": [
+      "chi tiêu chiếm quá nhiều thu nhập",
+      "chi tiêu 80-90% thu nhập"
+    ],
+    "question": "Chi tiêu của tôi chiếm hơn 70% thu nhập",
+    "answer": "Tỷ lệ chi tiêu trên 70% là mức cần cải thiện. Mục tiêu đưa chi tiêu về dưới 60% thu nhập bằng cách rà soát và cắt giảm từng nhóm chi phí, đặc biệt là chi phí tùy ý."
+  },
+  {
+    "id": "RCM_015",
+    "keywords": [
+      "mua xe máy",
+      "tiết kiệm mua xe máy",
+      "kế hoạch mua xe máy"
+    ],
+    "question": "Tôi muốn mua xe máy trong 1–2 năm",
+    "answer": "Để mua xe máy: xác định số tiền cần (ví dụ: 40 triệu), chia cho số tháng (24 tháng) = cần tiết kiệm ~1,67 triệu/tháng. Mở tài khoản tiết kiệm riêng cho mục tiêu này và tự động trích hàng tháng."
+  },
+  {
+    "id": "RCM_016",
+    "keywords": [
+      "mua xe ô tô",
+      "tiết kiệm mua ô tô",
+      "kế hoạch mua ô tô"
+    ],
+    "question": "Tôi muốn mua ô tô",
+    "answer": "Mua ô tô: nên có vốn tự có ít nhất 30–50% giá xe. Nếu vay ngân hàng, đảm bảo tiền trả góp (gốc + lãi + bảo hiểm + phí) không vượt 30–35% thu nhập. Lưu ý thêm chi phí vận hành: xăng, bảo dưỡng, phí đường, bãi đỗ xe..."
+  },
+  {
+    "id": "RCM_017",
+    "keywords": [
+      "mua nhà",
+      "kế hoạch mua nhà",
+      "tiết kiệm mua nhà"
+    ],
+    "question": "Tôi đang hướng đến mục tiêu mua nhà",
+    "answer": "Để mua nhà: (1) Tích lũy 20–30% giá trị nhà làm vốn tự có, (2) Kiểm tra khả năng vay (thu nhập có đủ trả góp không?), (3) Duy trì điểm tín dụng tốt, (4) Nghiên cứu kỹ thị trường và các chương trình vay ưu đãi."
+  },
+  {
+    "id": "RCM_018",
+    "keywords": [
+      "du học",
+      "tiết kiệm cho du học",
+      "kế hoạch du học"
+    ],
+    "question": "Tôi đang tiết kiệm cho việc du học",
+    "answer": "Du học cần lên kế hoạch 2–5 năm trước. Ước tính tổng chi phí (học phí + sinh hoạt + vé máy bay + dự phòng), tìm học bổng và vay ưu đãi để giảm gánh nặng, sau đó tính mức tiết kiệm hàng tháng cần thiết."
+  },
+  {
+    "id": "RCM_019",
+    "keywords": [
+      "mục tiêu 6 tháng",
+      "ngắn hạn 6 tháng",
+      "tiết kiệm 6 tháng"
+    ],
+    "question": "Tôi có mục tiêu tài chính trong 6 tháng tới",
+    "answer": "Với mục tiêu 6 tháng, bạn cần tiết kiệm tập trung. Lấy số tiền cần chia 6 = mức tiết kiệm hàng tháng. Cắt giảm mọi chi tiêu không thiết yếu trong giai đoạn này và tạo tài khoản tiết kiệm riêng cho mục tiêu."
+  },
+  {
+    "id": "RCM_020",
+    "keywords": [
+      "mục tiêu 5 năm",
+      "dài hạn",
+      "kế hoạch 5 năm"
+    ],
+    "question": "Tôi có mục tiêu tài chính dài hạn 5 năm",
+    "answer": "Với mục tiêu 5 năm, bạn có thời gian để lên kế hoạch và đầu tư thêm thay vì chỉ tiết kiệm. Chia mục tiêu thành các cột mốc nhỏ (1 năm, 2 năm...) để dễ theo dõi tiến độ."
+  },
+  {
+    "id": "RCM_021",
+    "keywords": [
+      "tiết kiệm đi du lịch",
+      "kế hoạch du lịch",
+      "mục tiêu du lịch"
+    ],
+    "question": "Tôi muốn tiết kiệm để đi du lịch",
+    "answer": "Xác định điểm đến và chi phí ước tính, cộng thêm 10–15% dự phòng. Chia tổng chi phí cho số tháng còn lại = mức tiết kiệm hàng tháng. Mở tài khoản tiết kiệm riêng và không chạm vào khoản này cho đến ngày đi."
+  },
+  {
+    "id": "RCM_022",
+    "keywords": [
+      "tiết kiệm học thêm",
+      "kế hoạch học thêm",
+      "nâng cao kỹ năng"
+    ],
+    "question": "Tôi muốn tiết kiệm để học thêm nâng cao kỹ năng",
+    "answer": "Đầu tư vào bản thân thường mang lại lợi tức rất cao. Xác định khóa học mục tiêu và chi phí, lập kế hoạch tiết kiệm trong 3–6 tháng. Coi đây là đầu tư quan trọng, không phải chi tiêu không cần thiết."
+  },
+  {
+    "id": "RCM_023",
+    "keywords": [
+      "thu nhập dưới 10 triệu",
+      "lương dưới 10 triệu",
+      "thu nhập thấp"
+    ],
+    "question": "Thu nhập của tôi dưới 10 triệu/tháng",
+    "answer": "Với thu nhập dưới 10 triệu tại thành phố lớn, cần kiểm soát chi tiêu rất chặt. Ưu tiên: (1) Tìm chỗ ở giá tốt hơn nếu có thể, (2) Nấu ăn tại nhà nhiều hơn, (3) Tiết kiệm dù chỉ 500k–1 triệu/tháng, (4) Đặt kế hoạch tăng thu nhập trong 6–12 tháng tới."
+  },
+  {
+    "id": "RCM_024",
+    "keywords": [
+      "thu nhập 10-20 triệu",
+      "lương trung bình"
+    ],
+    "question": "Thu nhập của tôi trong khoảng 10–20 triệu/tháng",
+    "answer": "Mức thu nhập này cho phép bạn sống ổn và tiết kiệm được nếu kiểm soát chi tiêu tốt. Mục tiêu: tiết kiệm 20% (2–4 triệu/tháng), đủ quỹ khẩn cấp 3–6 tháng và bắt đầu hướng đến một mục tiêu tài chính cụ thể."
+  },
+  {
+    "id": "RCM_025",
+    "keywords": [
+      "thu nhập trên 20 triệu",
+      "lương cao",
+      "thu nhập tốt"
+    ],
+    "question": "Thu nhập của tôi trên 20 triệu/tháng",
+    "answer": "Mức thu nhập tốt — cơ hội lớn để tích lũy tài sản nhanh hơn. Tránh bẫy 'lifestyle inflation' (tăng chi tiêu theo thu nhập). Hãy tăng tỷ lệ tiết kiệm/đầu tư lên 25–35% và đa dạng hóa danh mục tài sản."
+  },
+  {
+    "id": "RCM_026",
+    "keywords": [
+      "sống TP.HCM",
+      "đang ở TP HCM",
+      "Sài Gòn"
+    ],
+    "question": "Tôi đang sống ở TP.HCM",
+    "answer": "TP.HCM có chi phí sinh hoạt cao. Chi phí thiết yếu cho 1 người thường 8–12 triệu/tháng. Khi lập ngân sách, hãy điều chỉnh nhóm thiết yếu có thể chiếm đến 55–60% thu nhập và cố gắng duy trì tiết kiệm ít nhất 15%."
+  },
+  {
+    "id": "RCM_027",
+    "keywords": [
+      "sống Hà Nội",
+      "đang ở Hà Nội"
+    ],
+    "question": "Tôi đang sống ở Hà Nội",
+    "answer": "Hà Nội có chi phí sinh hoạt tương đương TP.HCM tại các quận trung tâm, thấp hơn ở ngoại thành. Chi phí thiết yếu cho 1 người thường 7–11 triệu/tháng. Lập ngân sách phù hợp và cố gắng tiết kiệm ít nhất 15–20%."
+  },
+  {
+    "id": "RCM_028",
+    "keywords": [
+      "sống tỉnh lẻ",
+      "ở tỉnh",
+      "thành phố nhỏ"
+    ],
+    "question": "Tôi đang sống ở tỉnh/thành phố nhỏ",
+    "answer": "Chi phí sinh hoạt ở tỉnh thấp hơn 30–50% so với TP.HCM và Hà Nội — đây là lợi thế lớn để tiết kiệm nhiều hơn. Hãy tận dụng bằng cách tăng tỷ lệ tiết kiệm hoặc đầu tư sớm hơn."
+  },
+  {
+    "id": "RCM_029",
+    "keywords": [
+      "sinh viên tài chính",
+      "sinh viên đánh giá tài chính"
+    ],
+    "question": "Kết quả đánh giá tài chính cho sinh viên",
+    "answer": "Với sinh viên, ưu tiên: (1) Xây thói quen theo dõi chi tiêu ngay từ bây giờ, (2) Tránh nợ tín dụng tiêu dùng, (3) Tiết kiệm dù chỉ 5–10% để hình thành thói quen, (4) Đầu tư vào kỹ năng và học vấn — đây là khoản đầu tư sinh lời cao nhất giai đoạn này."
+  },
+  {
+    "id": "RCM_030",
+    "keywords": [
+      "mới đi làm",
+      "người mới ra trường",
+      "vừa đi làm"
+    ],
+    "question": "Kết quả đánh giá cho người mới đi làm",
+    "answer": "Ba năm đầu đi làm rất quan trọng để thiết lập nền tảng tài chính. Ưu tiên theo thứ tự: (1) Xây quỹ khẩn cấp 3–6 tháng, (2) Kiểm soát chi tiêu theo nguyên tắc 50/30/20, (3) Bắt đầu đầu tư cho hưu trí dù ở mức nhỏ."
+  },
+  {
+    "id": "RCM_031",
+    "keywords": [
+      "có gia đình",
+      "có vợ/chồng",
+      "có con nhỏ"
+    ],
+    "question": "Kết quả đánh giá cho người đã có gia đình",
+    "answer": "Với gia đình trẻ, ngoài tài chính cá nhân cần chú ý: (1) Bảo hiểm sức khỏe đầy đủ cho cả gia đình, (2) Quỹ giáo dục cho con, (3) Quỹ khẩn cấp gia đình (6 tháng chi phí cả nhà), (4) Kế hoạch mua nhà nếu chưa có chỗ ở ổn định."
+  },
+  {
+    "id": "RCM_032",
+    "keywords": [
+      "freelancer",
+      "thu nhập không đều",
+      "tự doanh"
+    ],
+    "question": "Kết quả đánh giá cho freelancer/thu nhập không đều",
+    "answer": "Với thu nhập không đều, cần quỹ khẩn cấp lớn hơn (6–12 tháng). Trong tháng thu nhập cao, tiết kiệm nhiều hơn bình thường để bù cho tháng thu nhập thấp. Tách tài khoản kinh doanh và cá nhân để quản lý rõ ràng hơn."
+  },
+  {
+    "id": "RCM_033",
+    "keywords": [
+      "cải thiện tài chính",
+      "làm gì để tốt hơn",
+      "muốn cải thiện"
+    ],
+    "question": "Tôi muốn cải thiện tình hình tài chính",
+    "answer": "Ba trọng tâm cần tập trung: (1) Kiểm soát chi tiêu — biết tiền đi đâu và cắt giảm chi tiêu không thiết yếu, (2) Xây dựng quỹ khẩn cấp đủ 3–6 tháng chi phí, (3) Tiết kiệm đều đặn ít nhất 10–20% thu nhập và có mục tiêu cụ thể."
+  },
+  {
+    "id": "RCM_034",
+    "keywords": [
+      "phân bổ ngân sách",
+      "chia tiền như thế nào",
+      "hướng dẫn phân bổ"
+    ],
+    "question": "Tôi nên phân bổ ngân sách thế nào?",
+    "answer": "Bạn có thể áp dụng 50/30/20: 50% thiết yếu (nhà, ăn, đi lại), 30% cá nhân (giải trí, mua sắm), 20% tiết kiệm/đầu tư. Nếu ở thành phố lớn, điều chỉnh thành 60/20/20 cho phù hợp."
+  },
+  {
+    "id": "RCM_035",
+    "keywords": [
+      "tăng tiết kiệm",
+      "tiết kiệm nhiều hơn",
+      "muốn tăng tiết kiệm"
+    ],
+    "question": "Làm sao để tôi tiết kiệm nhiều hơn?",
+    "answer": "Các cách tăng tiết kiệm: (1) Tự động chuyển tiết kiệm ngay khi nhận lương, (2) Hủy đăng ký dịch vụ không dùng, (3) Nấu ăn tại nhà nhiều hơn, (4) Đặt quy tắc '24 giờ' trước khi mua hàng không thiết yếu, (5) Tìm nguồn thu nhập thêm."
+  },
+  {
+    "id": "RCM_036",
+    "keywords": [
+      "mục tiêu không khả thi",
+      "không đủ tiền",
+      "khó đạt mục tiêu"
+    ],
+    "question": "Mục tiêu của tôi có khả thi không?",
+    "answer": "Dựa trên thu nhập và khả năng tiết kiệm hiện tại, mục tiêu của bạn có thể cần: (1) Kéo dài thời gian thực hiện, hoặc (2) Tăng mức tiết kiệm hàng tháng, hoặc (3) Kết hợp cả hai. Tôi có thể tính cụ thể nếu bạn cung cấp số tiền mục tiêu và thu nhập."
+  },
+  {
+    "id": "RCM_037",
+    "keywords": [
+      "đạt mục tiêu sớm hơn",
+      "rút ngắn thời gian mục tiêu"
+    ],
+    "question": "Tôi muốn đạt mục tiêu sớm hơn dự kiến",
+    "answer": "Để đạt mục tiêu sớm hơn: (1) Tăng thu nhập (làm thêm, tăng kỹ năng, chuyển việc tốt hơn), (2) Cắt giảm chi tiêu không thiết yếu để tăng tiết kiệm, (3) Đầu tư khoản tiết kiệm vào kênh có lợi suất cao hơn (nhưng đi kèm rủi ro)."
+  },
+  {
+    "id": "RCM_038",
+    "keywords": [
+      "không biết bắt đầu từ đâu",
+      "bắt đầu thế nào",
+      "mới bắt đầu"
+    ],
+    "question": "Tôi không biết bắt đầu cải thiện tài chính từ đâu",
+    "answer": "Bắt đầu từ 3 bước đơn giản nhất: (1) Tuần này: theo dõi toàn bộ chi tiêu trong 7 ngày, (2) Tháng này: xây quỹ khẩn cấp đầu tiên 500k–1 triệu, (3) 3 tháng tới: đặt một mục tiêu tiết kiệm cụ thể. Nhỏ nhưng nhất quán sẽ tạo ra thay đổi lớn."
+  },
+  {
+    "id": "RCM_039",
+    "keywords": [
+      "đánh giá tổng quan tốt",
+      "điểm mạnh tài chính"
+    ],
+    "question": "Điểm mạnh trong tài chính của tôi là gì?",
+    "answer": "Dựa trên thông tin bạn chia sẻ, điểm mạnh của bạn có thể bao gồm: không có nợ, đã có khoản tiết kiệm, hoặc tỷ lệ chi tiêu hợp lý. Hãy duy trì các điểm mạnh này trong khi cải thiện các điểm còn yếu."
+  },
+  {
+    "id": "RCM_040",
+    "keywords": [
+      "đánh giá điểm yếu",
+      "cần cải thiện gì",
+      "điểm cần cải thiện"
+    ],
+    "question": "Điểm cần cải thiện trong tài chính của tôi là gì?",
+    "answer": "Dựa trên thông tin bạn chia sẻ, các điểm cần cải thiện thường gặp bao gồm: quỹ khẩn cấp chưa đủ, tỷ lệ tiết kiệm còn thấp, hoặc chưa có mục tiêu tài chính cụ thể. Mỗi điểm đều có thể cải thiện từng bước."
+  },
+  {
+    "id": "RCM_041",
+    "keywords": [
+      "vừa mất việc",
+      "mất việc làm",
+      "thất nghiệp"
+    ],
+    "question": "Tôi vừa mất việc làm",
+    "answer": "Ưu tiên ngay: (1) Kích hoạt quỹ khẩn cấp — đây là lúc sử dụng nó, (2) Cắt giảm ngay tất cả chi tiêu không thiết yếu, (3) Nộp hồ sơ trợ cấp thất nghiệp nếu đủ điều kiện, (4) Tập trung tìm việc mới trong 1–2 tháng. Không nên vay tiêu dùng để trang trải trong giai đoạn này."
+  },
+  {
+    "id": "RCM_042",
+    "keywords": [
+      "vừa được tăng lương",
+      "tăng thu nhập",
+      "thu nhập tăng"
+    ],
+    "question": "Tôi vừa được tăng lương",
+    "answer": "Chúc mừng! Lời khuyên: không tăng chi tiêu theo tỷ lệ tăng lương (bẫy lifestyle inflation). Hãy phân bổ khoản tăng thêm: 50% vào tiết kiệm/đầu tư, 30% vào mục tiêu tài chính, 20% cho phép bạn tự thưởng hợp lý."
+  },
+  {
+    "id": "RCM_043",
+    "keywords": [
+      "vừa nhận thưởng",
+      "tiền thưởng",
+      "bonus"
+    ],
+    "question": "Tôi vừa nhận được tiền thưởng",
+    "answer": "Cách phân bổ tiền thưởng hiệu quả: (1) Bổ sung quỹ khẩn cấp nếu chưa đủ, (2) Trả khoản nợ lãi suất cao nếu có, (3) Đưa vào mục tiêu tài chính đang theo đuổi, (4) Cho phép bản thân tiêu một phần nhỏ (~10–20%) để tự thưởng."
+  },
+  {
+    "id": "RCM_044",
+    "keywords": [
+      "chi phí y tế lớn",
+      "bệnh tật",
+      "viện phí"
+    ],
+    "question": "Tôi vừa có chi phí y tế lớn bất ngờ",
+    "answer": "Đây là tình huống quỹ khẩn cấp được thiết kế để xử lý. Nếu quỹ khẩn cấp không đủ, hãy: (1) Tìm hiểu kế hoạch trả chậm với bệnh viện, (2) Kiểm tra quyền lợi bảo hiểm, (3) Tạm thời cắt giảm mọi chi tiêu không thiết yếu để bù đắp. Sau khi ổn định, ưu tiên xây lại quỹ khẩn cấp."
+  },
+  {
+    "id": "RCM_045",
+    "keywords": [
+      "sắp kết hôn",
+      "cưới hỏi",
+      "chi phí đám cưới"
+    ],
+    "question": "Tôi sắp kết hôn và cần lên kế hoạch tài chính",
+    "answer": "Chi phí đám cưới tại Việt Nam thường từ 50–300 triệu+ tùy quy mô. Nên lên kế hoạch ít nhất 1–2 năm trước: (1) Xác định ngân sách đám cưới, (2) Tiết kiệm riêng cho đám cưới, (3) Thảo luận với bạn đời về mô hình quản lý tài chính chung sau kết hôn."
+  },
+  {
+    "id": "FALL_001",
+    "keywords": [
+      "không hiểu",
+      "không rõ câu hỏi",
+      "[ngoài intent]"
+    ],
+    "question": "[Câu hỏi không nhận diện được]",
+    "answer": "Xin lỗi, tôi chưa hiểu yêu cầu của bạn. Bạn có thể hỏi về: lập ngân sách, tiết kiệm, quỹ khẩn cấp, quản lý nợ, hay yêu cầu đánh giá tài chính cá nhân."
+  },
+  {
+    "id": "FALL_002",
+    "keywords": [
+      "ngoài phạm vi",
+      "không liên quan tài chính",
+      "hỏi chủ đề khác"
+    ],
+    "question": "[Câu hỏi ngoài lĩnh vực tài chính]",
+    "answer": "Xin lỗi, tôi chỉ hỗ trợ các chủ đề liên quan đến quản lý tài chính cá nhân, lập ngân sách, tiết kiệm và mục tiêu tài chính. Bạn có câu hỏi nào về tài chính không?"
+  },
+  {
+    "id": "FALL_003",
+    "keywords": [
+      "câu hỏi mơ hồ",
+      "giải thích lại",
+      "không hiểu ý"
+    ],
+    "question": "Bạn có thể giải thích rõ hơn không?",
+    "answer": "Chắc chắn rồi! Bạn có thể cho tôi biết cụ thể hơn bạn muốn tìm hiểu về khía cạnh nào? Ví dụ: ngân sách, tiết kiệm, quỹ khẩn cấp, nợ hay mục tiêu tài chính?"
+  },
+  {
+    "id": "FALL_004",
+    "keywords": [
+      "dữ liệu không hợp lệ",
+      "nhập sai",
+      "ký tự lạ",
+      "số không hợp lệ"
+    ],
+    "question": "Dữ liệu nhập vào không hợp lệ",
+    "answer": "Dữ liệu bạn vừa nhập có vẻ chưa hợp lệ. Vui lòng nhập lại dưới dạng số (ví dụ: '15 triệu' hoặc '15000000') để tôi có thể xử lý chính xác."
+  },
+  {
+    "id": "FALL_005",
+    "keywords": [
+      "không muốn cung cấp",
+      "từ chối",
+      "bỏ qua",
+      "không trả lời"
+    ],
+    "question": "Tôi không muốn cung cấp thông tin này",
+    "answer": "Không sao! Bạn vẫn có thể hỏi kiến thức chung về quản lý tài chính mà không cần chia sẻ thông tin cá nhân. Bạn muốn tìm hiểu về chủ đề gì?"
+  },
+  {
+    "id": "FALL_006",
+    "keywords": [
+      "không biết số tiền mục tiêu",
+      "chưa biết giá",
+      "ước tính giá"
+    ],
+    "question": "Tôi chưa biết cần bao nhiêu tiền cho mục tiêu",
+    "answer": "Không sao! Bạn có thể ước tính hoặc cho tôi biết mục tiêu cụ thể là gì (mua xe, mua nhà, du học...) để tôi gợi ý mức chi phí tham khảo."
+  },
+  {
+    "id": "FALL_007",
+    "keywords": [
+      "không biết thời gian mục tiêu",
+      "chưa xác định thời gian"
+    ],
+    "question": "Tôi chưa biết muốn đạt mục tiêu trong bao lâu",
+    "answer": "Không cần xác định chính xác ngay. Bạn có thể ước tính: ngắn hạn (dưới 1 năm), trung hạn (1–3 năm) hay dài hạn (trên 3 năm)? Điều này giúp tôi đưa ra gợi ý phù hợp hơn."
+  },
+  {
+    "id": "FALL_008",
+    "keywords": [
+      "không đồng ý đánh giá",
+      "phản hồi không hài lòng",
+      "sai kết quả"
+    ],
+    "question": "Tôi không đồng ý với kết quả đánh giá",
+    "answer": "Cảm ơn phản hồi của bạn! Đánh giá của tôi dựa trên thông tin bạn cung cấp và các nguyên tắc tài chính phổ biến, chỉ mang tính tham khảo. Bạn luôn có thể điều chỉnh dựa trên hoàn cảnh thực tế. Bạn có muốn đánh giá lại với thông tin cập nhật không?"
+  },
+  {
+    "id": "FALL_009",
+    "keywords": [
+      "kết thúc",
+      "thoát",
+      "dừng",
+      "xong rồi",
+      "không hỏi thêm"
+    ],
+    "question": "Kết thúc cuộc trò chuyện",
+    "answer": "Cảm ơn bạn đã sử dụng Budget Planner Assistant! Chúc bạn quản lý tài chính hiệu quả và sớm đạt được các mục tiêu. Hẹn gặp lại!"
+  },
+  {
+    "id": "FALL_010",
+    "keywords": [
+      "lặp lại câu hỏi",
+      "giải thích lại đi",
+      "không hiểu câu trả lời"
+    ],
+    "question": "Bạn có thể giải thích lại không?",
+    "answer": "Tất nhiên! Bạn muốn tôi giải thích lại phần nào? Tôi sẽ cố gắng diễn đạt đơn giản và dễ hiểu hơn."
+  },
+  {
+    "id": "FALL_011",
+    "keywords": [
+      "câu hỏi về tiền thật",
+      "muốn chuyển tiền",
+      "giao dịch thật"
+    ],
+    "question": "Tôi muốn thực hiện giao dịch ngân hàng",
+    "answer": "Tôi không thể thực hiện các giao dịch ngân hàng hoặc chuyển tiền. Tôi chỉ là chatbot tư vấn tài chính. Để thực hiện giao dịch, bạn hãy dùng ứng dụng ngân hàng hoặc đến chi nhánh trực tiếp."
+  },
+  {
+    "id": "FALL_012",
+    "keywords": [
+      "xin tư vấn đầu tư cụ thể",
+      "khuyên tôi mua gì",
+      "nên đầu tư vào đâu cụ thể"
+    ],
+    "question": "Bạn có thể tư vấn tôi nên đầu tư vào đâu cụ thể không?",
+    "answer": "Tôi không thể đưa ra lời khuyên đầu tư cụ thể (mua cổ phiếu nào, quỹ nào...) vì đây là lĩnh vực cần chuyên gia tài chính có chứng chỉ. Tôi có thể chia sẻ kiến thức chung về các kênh đầu tư để bạn tham khảo."
+  },
+  {
+    "id": "FALL_013",
+    "keywords": [
+      "không tìm thấy câu trả lời",
+      "không có thông tin",
+      "[FAQ miss]"
+    ],
+    "question": "[Không tìm thấy câu trả lời phù hợp]",
+    "answer": "Tôi chưa có thông tin đầy đủ về vấn đề này. Bạn có thể thử hỏi theo cách khác, hoặc đây có thể là chủ đề tôi cần bổ sung thêm trong tương lai."
+  },
+  {
+    "id": "FALL_014",
+    "keywords": [
+      "hỏi về chuyện cá nhân không liên quan",
+      "cuộc sống cá nhân"
+    ],
+    "question": "Bạn có thể tư vấn về vấn đề cá nhân không liên quan tài chính?",
+    "answer": "Tôi chỉ có thể hỗ trợ về tài chính cá nhân và ngân sách. Với các vấn đề cá nhân khác, bạn nên tìm kiếm sự hỗ trợ từ người thân, bạn bè hoặc chuyên gia tư vấn phù hợp."
+  },
+  {
+    "id": "FALL_015",
+    "keywords": [
+      "nhập số âm",
+      "số tiêu cực",
+      "thu nhập âm"
+    ],
+    "question": "[Tôi nhập số âm hoặc số không hợp lý]",
+    "answer": "Có vẻ số bạn nhập chưa hợp lệ (số âm hoặc quá lớn/nhỏ bất thường). Vui lòng kiểm tra và nhập lại. Nếu thu nhập của bạn thực sự đang âm (thâm hụt), bạn có thể nói 'Thu nhập của tôi đang âm' để tôi hỗ trợ phù hợp hơn."
+  },
+  {
+    "id": "FALL_016",
+    "keywords": [
+      "hỏi nhiều lần câu hỏi đã trả lời",
+      "hỏi lại"
+    ],
+    "question": "Tôi muốn hỏi lại câu hỏi vừa rồi",
+    "answer": "Tất nhiên! Bạn muốn tôi giải thích lại phần nào — câu trả lời về [chủ đề vừa đề cập]? Tôi sẵn sàng làm rõ thêm bất kỳ điểm nào."
+  },
+  {
+    "id": "FALL_017",
+    "keywords": [
+      "thay đổi thông tin",
+      "cập nhật thông tin",
+      "sửa thông tin đã nhập"
+    ],
+    "question": "Tôi muốn thay đổi thông tin đã cung cấp",
+    "answer": "Không vấn đề! Bạn hãy cho tôi biết thông tin nào cần cập nhật (ví dụ: thu nhập, chi tiêu, tiết kiệm...) và giá trị mới là bao nhiêu. Tôi sẽ cập nhật và đánh giá lại."
+  },
+  {
+    "id": "FALL_018",
+    "keywords": [
+      "hỏi giờ",
+      "hôm nay ngày mấy",
+      "câu hỏi không liên quan"
+    ],
+    "question": "Hôm nay là ngày mấy?",
+    "answer": "Tôi không có thông tin về ngày giờ hiện tại. Bạn có thể xem đồng hồ hoặc điện thoại. Tôi chỉ có thể hỗ trợ về quản lý tài chính cá nhân — bạn có câu hỏi tài chính nào không?"
+  }
 ]

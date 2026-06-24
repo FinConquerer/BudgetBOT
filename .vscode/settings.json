@@ -1,0 +1,6 @@
+{
+  "python.defaultInterpreterPath": "/home/dogki/AIO/Module_1/BudgetBOT/backend/.venv/bin/python",
+  "python.analysis.extraPaths": [
+    "/home/dogki/AIO/Module_1/BudgetBOT/backend"
+  ]
+}
