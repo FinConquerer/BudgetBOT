@@ -1,0 +1,55 @@
+"""Mock profiles để demo và test API khi chưa có database."""
+
+SAMPLE_PROFILES = [
+    {
+        "id": "normal",
+        "name": "Hồ sơ bình thường",
+        "description": "Thu nhập ổn định, chi tiêu hợp lý, mục tiêu khả thi.",
+        "profile": {
+            "monthly_income": 20_000_000,
+            "fixed_expenses": 7_000_000,
+            "variable_expenses": 5_000_000,
+            "debt_payment": 1_000_000,
+            "debt_outstanding": 20_000_000,
+            "current_savings": 30_000_000,
+            "financial_goal": "mua laptop",
+            "goal_amount": 25_000_000,
+            "goal_deadline_months": 10,
+            "income_stability": "stable",
+        },
+    },
+    {
+        "id": "negative_cashflow",
+        "name": "Chi tiêu vượt thu nhập",
+        "description": "Tổng chi lớn hơn thu nhập, cần cảnh báo dòng tiền âm.",
+        "profile": {
+            "monthly_income": 15_000_000,
+            "fixed_expenses": 9_000_000,
+            "variable_expenses": 6_000_000,
+            "debt_payment": 2_000_000,
+            "debt_outstanding": 40_000_000,
+            "current_savings": 5_000_000,
+            "financial_goal": "lập quỹ khẩn cấp",
+            "goal_amount": 30_000_000,
+            "goal_deadline_months": 8,
+            "income_stability": "stable",
+        },
+    },
+    {
+        "id": "unstable_income",
+        "name": "Thu nhập không ổn định",
+        "description": "Thu nhập biến động, cần ưu tiên quỹ khẩn cấp.",
+        "profile": {
+            "monthly_income": 25_000_000,
+            "fixed_expenses": 8_000_000,
+            "variable_expenses": 7_000_000,
+            "debt_payment": 0,
+            "debt_outstanding": 0,
+            "current_savings": 15_000_000,
+            "financial_goal": "du lịch",
+            "goal_amount": 40_000_000,
+            "goal_deadline_months": 12,
+            "income_stability": "unstable",
+        },
+    },
+]
