@@ -1,23 +1,36 @@
 """Smoke test cho rulebase API."""
 
 import pytest
-from fastapi.testclient import TestClient
+from httpx import ASGITransport, AsyncClient
 
 from app.main import app
 
 
 @pytest.fixture
-def client():
-    with TestClient(app) as c:
+async def client():
+    async with AsyncClient(
+        transport=ASGITransport(app=app),
+        base_url="http://testserver",
+    ) as c:
         yield c
 
 
-def test_health(client):
-    assert client.get("/health").json() == {"status": "ok"}
+pytestmark = pytest.mark.anyio
 
 
-def test_plan_endpoint(client):
-    r = client.post(
+async def test_health(client):
+    r = await client.get("/health")
+    assert r.json() == {"status": "ok"}
+
+
+async def test_version_endpoint(client):
+    r = await client.get("/api/version")
+    assert r.status_code == 200
+    assert r.json()["name"] == "BudgetBOT Rulebase API"
+
+
+async def test_plan_endpoint(client):
+    r = await client.post(
         "/api/plan",
         json={
             "monthly_income": 20_000_000,
@@ -32,8 +45,8 @@ def test_plan_endpoint(client):
     assert body["savings_rate"] == 0.2
 
 
-def test_plan_endpoint_extended_contract(client):
-    r = client.post(
+async def test_plan_endpoint_extended_contract(client):
+    r = await client.post(
         "/api/plan",
         json={
             "monthly_income": 20_000_000,
@@ -55,8 +68,8 @@ def test_plan_endpoint_extended_contract(client):
     assert body["goal_assessment"]["status"] == "feasible"
 
 
-def test_what_if_endpoint(client):
-    r = client.post(
+async def test_what_if_endpoint(client):
+    r = await client.post(
         "/api/what-if",
         json={
             "profile": {
@@ -72,7 +85,27 @@ def test_what_if_endpoint(client):
     assert r.json()["comparison"]["monthly_surplus_delta"] == 1_000_000
 
 
-def test_mock_profiles_endpoint(client):
-    r = client.get("/api/mock-profiles")
+async def test_mock_profiles_endpoint(client):
+    r = await client.get("/api/mock-profiles")
     assert r.status_code == 200
     assert len(r.json()) > 0
+
+
+async def test_faq_ask_endpoint(client):
+    r = await client.post("/api/faq", json={"question": "Xin chào"})
+    assert r.status_code == 200
+    assert r.json()["answer"]
+
+
+async def test_faq_list_endpoint(client):
+    r = await client.get("/api/faqs", params={"q": "chào"})
+    assert r.status_code == 200
+    body = r.json()
+    assert body["total"] > 0
+    assert body["items"][0]["id"]
+
+
+async def test_faq_detail_endpoint(client):
+    r = await client.get("/api/faqs/GREET_001")
+    assert r.status_code == 200
+    assert r.json()["question"] == "Xin chào"

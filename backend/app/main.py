@@ -5,6 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routes import router
+from app.db.seed import seed
 
 
 app = FastAPI(title="BudgetBOT Rulebase API", version="0.1.0")
@@ -19,6 +20,12 @@ app.add_middleware(
 )
 
 app.include_router(router, prefix="/api")
+
+
+@app.on_event("startup")
+def seed_database() -> None:
+    """Tạo schema và nạp FAQ mẫu để các API public có dữ liệu ngay."""
+    seed()
 
 
 @app.get("/health", tags=["meta"])
