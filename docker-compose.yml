@@ -18,8 +18,8 @@ services:
   backend:
     build: ./backend
     environment:
-      DATABASE_URL: postgresql+psycopg://budgetbot:budgetbot@db:5432/budgetbot
-      CORS_ORIGINS: http://localhost:5173
+      DATABASE_URL: ${DATABASE_URL:-postgresql+psycopg://budgetbot:budgetbot@db:5432/budgetbot}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173}
     ports:
       - "8000:8000"
     depends_on:
