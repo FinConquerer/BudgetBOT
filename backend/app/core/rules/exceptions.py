@@ -2,4 +2,4 @@
 
 
 class RuleValidationError(ValueError):
-    """Dữ liệu đầu vào không hợp lệ để tạo budget plan."""
+    """Dữ liệu đầu vào không hợp lệ để tạo kế hoạch ngân sách."""

@@ -14,7 +14,7 @@ frontend/                 # React (Vite + TypeScript)  ── UI
   src/{api.ts, App.tsx}
 backend/                  # FastAPI (Python)           ── API
   app/
-    api/routes.py         # endpoints /api/faq, /api/plan
+    api/routes.py         # endpoints /api/plan, /api/chats/{chat_id}/ask
     core/{rules,faq,chatbot}   # business logic (deterministic, có test)
     db/{database,models,seed}  # SQLAlchemy → PostgreSQL
     schemas.py            # Pydantic (hợp đồng FE↔BE)
@@ -29,6 +29,7 @@ app.py                    # prototype Streamlit (demo nhanh, không phải FE ch
 
 ## Chạy nhanh (Docker)
 ```bash
+cp .env.example .env
 docker compose up --build
 # Frontend  → http://localhost:5173
 # API docs  → http://localhost:8000/docs
@@ -63,3 +64,9 @@ npm install && npm run dev          # UI ở :5173 (proxy /api → :8000)
 | AIE Pipeline | Dev |
 | AIE Model | Dev |
 | AIE Data | Dev |
+
+## Environment config
+- Commit `.env.example` so the team knows which variables are required.
+- Do not commit `.env`; it stores real secrets such as `DATABASE_URL` and `SECRET_KEY`.
+- SQLAlchemy with psycopg v3 uses URLs like `postgresql+psycopg://...`.
+- FAQ Q&A uses `POST /api/chats/{chat_id}/ask`; there is no public `POST /api/faq` shortcut.

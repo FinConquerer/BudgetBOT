@@ -1,4 +1,4 @@
-"""FAQ Engine — tra cứu câu trả lời từ DB (keyword matching). Nâng cấp RAG/LLM ở V2."""
+"""Bộ xử lý FAQ tra cứu câu trả lời từ dữ liệu bằng khớp từ khóa."""
 import json
 from pathlib import Path
 

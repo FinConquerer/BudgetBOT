@@ -1,10 +1,13 @@
 """Điểm vào FastAPI. Chạy: uvicorn app.main:app --reload"""
 import os
 
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routes import router
+
+load_dotenv()
 
 
 app = FastAPI(title="BudgetBOT Rulebase API", version="0.1.0")
@@ -28,7 +31,16 @@ def root() -> dict[str, str | list[str]]:
         "name": "BudgetBOT Rulebase API",
         "status": "ok",
         "docs": "/docs",
-        "endpoints": ["/health", "/api/plan", "/api/what-if", "/api/mock-profiles"],
+        "endpoints": [
+            "/health",
+            "/api/version",
+            "/api/plan",
+            "/api/what-if",
+            "/api/auth/register",
+            "/api/auth/login",
+            "/api/chats",
+            "/api/plans",
+        ],
     }
 
 
