@@ -1,0 +1,185 @@
+{
+  "app": {
+    "name": "BudgetBOT",
+    "tagline": "Trợ lý ngân sách cá nhân"
+  },
+  "nav": {
+    "section": { "main": "Tổng quan", "tools": "Công cụ" },
+    "dashboard": "Trang chính",
+    "planner": "Lập kế hoạch",
+    "chat": "Trợ lý",
+    "history": "Lịch sử kế hoạch",
+    "faq": "Hỏi đáp"
+  },
+  "topbar": {
+    "toggleTheme": "Đổi giao diện sáng/tối",
+    "language": "Ngôn ngữ",
+    "account": "Tài khoản",
+    "logout": "Đăng xuất",
+    "login": "Đăng nhập"
+  },
+  "common": {
+    "cancel": "Huỷ",
+    "save": "Lưu",
+    "add": "Thêm",
+    "edit": "Sửa",
+    "delete": "Xoá",
+    "retry": "Thử lại",
+    "error": "Đã có lỗi xảy ra. Vui lòng thử lại.",
+    "loading": "Đang tải…",
+    "close": "Đóng",
+    "submit": "Gửi",
+    "back": "Quay lại",
+    "search": "Tìm kiếm",
+    "viewAll": "Xem tất cả",
+    "open": "Mở"
+  },
+  "dashboard": {
+    "title": "Trang chính",
+    "subtitle": "Tổng quan nhanh và lối tắt tới các công cụ.",
+    "greeting": "Xin chào, {{name}}!",
+    "greetingGuest": "Chào mừng đến với BudgetBOT",
+    "savedPlans": "Kế hoạch đã lưu",
+    "latestIncome": "Thu nhập gần nhất",
+    "latestSurplus": "Dư gần nhất",
+    "quick": {
+      "planner": "Lập kế hoạch ngân sách mới",
+      "plannerDesc": "Nhập thu chi để nhận phân bổ 50/30/20.",
+      "chat": "Hỏi trợ lý tài chính",
+      "chatDesc": "Đặt câu hỏi về tiết kiệm, ngân sách, nợ."
+    },
+    "loginPrompt": {
+      "title": "Đăng nhập để lưu kế hoạch",
+      "description": "Tạo tài khoản để lưu và theo dõi lịch sử kế hoạch của bạn.",
+      "action": "Đăng nhập"
+    }
+  },
+  "history": {
+    "title": "Lịch sử kế hoạch",
+    "subtitle": "Các kế hoạch ngân sách bạn đã lưu.",
+    "income": "Thu nhập",
+    "surplus": "Dư hàng tháng",
+    "createdAt": "Ngày tạo",
+    "noGoal": "Không có mục tiêu",
+    "empty": {
+      "title": "Chưa có kế hoạch nào",
+      "description": "Lưu kế hoạch ở trang Lập kế hoạch để xem tại đây."
+    },
+    "loginRequired": {
+      "title": "Cần đăng nhập",
+      "description": "Đăng nhập để xem lịch sử kế hoạch đã lưu."
+    },
+    "confirmDelete": {
+      "title": "Xoá kế hoạch?",
+      "description": "Hành động này không thể hoàn tác."
+    }
+  },
+  "faq": {
+    "title": "Hỏi đáp",
+    "subtitle": "Tra cứu câu trả lời về quản lý tài chính cá nhân.",
+    "searchPlaceholder": "Tìm theo câu hỏi hoặc từ khoá…",
+    "empty": {
+      "title": "Không tìm thấy",
+      "description": "Thử từ khoá khác."
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Đăng nhập",
+      "subtitle": "Chào mừng trở lại BudgetBOT",
+      "submit": "Đăng nhập",
+      "noAccount": "Chưa có tài khoản?",
+      "toRegister": "Đăng ký ngay"
+    },
+    "register": {
+      "title": "Tạo tài khoản",
+      "subtitle": "Bắt đầu quản lý ngân sách cùng BudgetBOT",
+      "submit": "Đăng ký",
+      "hasAccount": "Đã có tài khoản?",
+      "toLogin": "Đăng nhập"
+    },
+    "fields": {
+      "username": "Tên đăng nhập",
+      "password": "Mật khẩu",
+      "email": "Email (tuỳ chọn)"
+    },
+    "hint": {
+      "username": "Tối thiểu 3 ký tự",
+      "password": "Tối thiểu 8 ký tự"
+    }
+  },
+  "planner": {
+    "title": "Lập kế hoạch ngân sách",
+    "subtitle": "Nhập thông tin tài chính để nhận phân bổ 50/30/20 và đánh giá mục tiêu.",
+    "disclaimer": "Chỉ mang tính tham khảo, không phải lời khuyên đầu tư.",
+    "form": {
+      "monthlyIncome": "Thu nhập hàng tháng",
+      "fixedExpenses": "Chi phí cố định",
+      "variableExpenses": "Chi phí linh hoạt",
+      "debtPayment": "Trả nợ hàng tháng",
+      "debtOutstanding": "Dư nợ còn lại",
+      "currentSavings": "Tiết kiệm hiện có",
+      "goal": "Mục tiêu tài chính",
+      "goalAmount": "Số tiền mục tiêu",
+      "goalDeadline": "Thời hạn (tháng)",
+      "stability": "Mức ổn định thu nhập",
+      "calc": "Tính kế hoạch",
+      "savePlan": "Lưu kế hoạch"
+    },
+    "stability": {
+      "stable": "Ổn định",
+      "unstable": "Không ổn định",
+      "seasonal": "Theo mùa"
+    },
+    "result": {
+      "title": "Kết quả",
+      "surplus": "Dư hàng tháng",
+      "savingsRate": "Tỷ lệ tiết kiệm",
+      "expenseRatio": "Tỷ lệ chi tiêu",
+      "debtRatio": "Tỷ lệ trả nợ",
+      "totalExpenses": "Tổng chi tiêu"
+    },
+    "allocation": {
+      "title": "Phân bổ đề xuất",
+      "needs": "Thiết yếu",
+      "wants": "Mong muốn",
+      "savings": "Tiết kiệm"
+    },
+    "goalAssessment": "Đánh giá mục tiêu",
+    "requiredSaving": "Cần tiết kiệm/tháng",
+    "warnings": "Cảnh báo",
+    "actions": "Việc nên làm",
+    "whatif": {
+      "title": "Thử kịch bản (what-if)",
+      "field": "Thay đổi yếu tố",
+      "delta": "Mức thay đổi",
+      "run": "Tính lại",
+      "surplusDelta": "Thay đổi dư",
+      "rateDelta": "Thay đổi tỷ lệ tiết kiệm"
+    },
+    "empty": {
+      "title": "Chưa có kết quả",
+      "description": "Nhập thông tin bên trái và bấm \"Tính kế hoạch\" để xem phân bổ."
+    },
+    "saved": "Đã lưu kế hoạch."
+  },
+  "chat": {
+    "title": "Trợ lý tài chính",
+    "subtitle": "Hỏi đáp về ngân sách, tiết kiệm và quản lý chi tiêu.",
+    "placeholder": "Nhập câu hỏi của bạn…",
+    "send": "Gửi",
+    "you": "Bạn",
+    "assistant": "Trợ lý",
+    "intent": "Ý định",
+    "sentiment": "Cảm xúc",
+    "empty": {
+      "title": "Bắt đầu trò chuyện",
+      "description": "Ví dụ: \"Tôi nên tiết kiệm bao nhiêu mỗi tháng?\""
+    }
+  },
+  "notFound": {
+    "title": "Không tìm thấy trang",
+    "description": "Trang bạn tìm không tồn tại.",
+    "home": "Về trang chính"
+  }
+}

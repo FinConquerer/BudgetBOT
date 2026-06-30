@@ -1,0 +1,185 @@
+{
+  "app": {
+    "name": "BudgetBOT",
+    "tagline": "Personal budgeting assistant"
+  },
+  "nav": {
+    "section": { "main": "Overview", "tools": "Tools" },
+    "dashboard": "Home",
+    "planner": "Planner",
+    "chat": "Assistant",
+    "history": "Plan history",
+    "faq": "FAQ"
+  },
+  "topbar": {
+    "toggleTheme": "Toggle light/dark",
+    "language": "Language",
+    "account": "Account",
+    "logout": "Log out",
+    "login": "Log in"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "save": "Save",
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "retry": "Retry",
+    "error": "Something went wrong. Please try again.",
+    "loading": "Loading…",
+    "close": "Close",
+    "submit": "Submit",
+    "back": "Back",
+    "search": "Search",
+    "viewAll": "View all",
+    "open": "Open"
+  },
+  "dashboard": {
+    "title": "Home",
+    "subtitle": "Quick overview and shortcuts to the tools.",
+    "greeting": "Hi, {{name}}!",
+    "greetingGuest": "Welcome to BudgetBOT",
+    "savedPlans": "Saved plans",
+    "latestIncome": "Latest income",
+    "latestSurplus": "Latest surplus",
+    "quick": {
+      "planner": "Create a new budget plan",
+      "plannerDesc": "Enter income and expenses to get a 50/30/20 split.",
+      "chat": "Ask the financial assistant",
+      "chatDesc": "Ask about saving, budgeting and debt."
+    },
+    "loginPrompt": {
+      "title": "Log in to save plans",
+      "description": "Create an account to save and track your plan history.",
+      "action": "Log in"
+    }
+  },
+  "history": {
+    "title": "Plan history",
+    "subtitle": "Budget plans you have saved.",
+    "income": "Income",
+    "surplus": "Monthly surplus",
+    "createdAt": "Created",
+    "noGoal": "No goal",
+    "empty": {
+      "title": "No plans yet",
+      "description": "Save a plan on the Planner page to see it here."
+    },
+    "loginRequired": {
+      "title": "Login required",
+      "description": "Log in to view your saved plan history."
+    },
+    "confirmDelete": {
+      "title": "Delete plan?",
+      "description": "This action cannot be undone."
+    }
+  },
+  "faq": {
+    "title": "FAQ",
+    "subtitle": "Look up answers about personal finance.",
+    "searchPlaceholder": "Search by question or keyword…",
+    "empty": {
+      "title": "No results",
+      "description": "Try a different keyword."
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Log in",
+      "subtitle": "Welcome back to BudgetBOT",
+      "submit": "Log in",
+      "noAccount": "No account yet?",
+      "toRegister": "Sign up"
+    },
+    "register": {
+      "title": "Create account",
+      "subtitle": "Start managing your budget with BudgetBOT",
+      "submit": "Sign up",
+      "hasAccount": "Already have an account?",
+      "toLogin": "Log in"
+    },
+    "fields": {
+      "username": "Username",
+      "password": "Password",
+      "email": "Email (optional)"
+    },
+    "hint": {
+      "username": "At least 3 characters",
+      "password": "At least 8 characters"
+    }
+  },
+  "planner": {
+    "title": "Budget planner",
+    "subtitle": "Enter your finances to get a 50/30/20 allocation and goal assessment.",
+    "disclaimer": "For reference only, not investment advice.",
+    "form": {
+      "monthlyIncome": "Monthly income",
+      "fixedExpenses": "Fixed expenses",
+      "variableExpenses": "Variable expenses",
+      "debtPayment": "Monthly debt payment",
+      "debtOutstanding": "Outstanding debt",
+      "currentSavings": "Current savings",
+      "goal": "Financial goal",
+      "goalAmount": "Goal amount",
+      "goalDeadline": "Deadline (months)",
+      "stability": "Income stability",
+      "calc": "Calculate plan",
+      "savePlan": "Save plan"
+    },
+    "stability": {
+      "stable": "Stable",
+      "unstable": "Unstable",
+      "seasonal": "Seasonal"
+    },
+    "result": {
+      "title": "Result",
+      "surplus": "Monthly surplus",
+      "savingsRate": "Savings rate",
+      "expenseRatio": "Expense ratio",
+      "debtRatio": "Debt ratio",
+      "totalExpenses": "Total expenses"
+    },
+    "allocation": {
+      "title": "Suggested allocation",
+      "needs": "Needs",
+      "wants": "Wants",
+      "savings": "Savings"
+    },
+    "goalAssessment": "Goal assessment",
+    "requiredSaving": "Required saving/month",
+    "warnings": "Warnings",
+    "actions": "Action items",
+    "whatif": {
+      "title": "What-if scenario",
+      "field": "Change factor",
+      "delta": "Change amount",
+      "run": "Recalculate",
+      "surplusDelta": "Surplus change",
+      "rateDelta": "Savings rate change"
+    },
+    "empty": {
+      "title": "No result yet",
+      "description": "Fill the form and press \"Calculate plan\" to see the allocation."
+    },
+    "saved": "Plan saved."
+  },
+  "chat": {
+    "title": "Financial assistant",
+    "subtitle": "Ask about budgeting, saving and spending management.",
+    "placeholder": "Type your question…",
+    "send": "Send",
+    "you": "You",
+    "assistant": "Assistant",
+    "intent": "Intent",
+    "sentiment": "Sentiment",
+    "empty": {
+      "title": "Start a conversation",
+      "description": "e.g. \"How much should I save each month?\""
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist.",
+    "home": "Back home"
+  }
+}
