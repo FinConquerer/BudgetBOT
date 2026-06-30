@@ -18,7 +18,13 @@ def seed() -> int:
         if db.query(Faq).count() == 0:
             items = json.loads(_FAQ_JSON.read_text(encoding="utf-8"))
             db.add_all(
-                Faq(question=i["question"], answer=i["answer"], keywords=i["keywords"])
+                Faq(
+                    faq_key=i["id"],
+                    question=i["question"],
+                    answer=i["answer"],
+                    keywords=i["keywords"],
+                    is_active=True,
+                )
                 for i in items
             )
             db.commit()

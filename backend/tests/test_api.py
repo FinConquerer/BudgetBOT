@@ -661,4 +661,8 @@ def test_what_if_endpoint(client):
 
 def test_mock_profiles_endpoint(client):
     r = client.get("/api/mock-profiles")
-    assert r.status_code == 404
+    assert r.status_code == 200
+    body = r.json()
+    assert isinstance(body, list)
+    assert body
+    assert {"id", "name", "description", "profile"} <= set(body[0].keys())

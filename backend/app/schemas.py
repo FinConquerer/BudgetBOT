@@ -141,6 +141,33 @@ class VersionResponse(BaseModel):
     environment: str
 
 
+class FaqAskRequest(BaseModel):
+    question: str = Field(..., min_length=1)
+
+
+class FaqAskResponse(BaseModel):
+    answer: str
+    intent: str
+    sentiment: str
+    confidence: float
+    status: str
+
+
+class FaqResponse(BaseModel):
+    id: str
+    question: str
+    answer: str
+    keywords: list[str] = Field(default_factory=list)
+    is_active: bool = True
+
+
+class FaqListResponse(BaseModel):
+    items: list[FaqResponse]
+    total: int
+    limit: int
+    offset: int
+
+
 class UserRegisterRequest(BaseModel):
     username: str = Field(..., min_length=3)
     password: str = Field(..., min_length=8)

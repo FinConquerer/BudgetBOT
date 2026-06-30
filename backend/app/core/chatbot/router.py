@@ -1,7 +1,13 @@
-"""Định tuyến hội thoại đơn giản (V1): câu hỏi -> FAQ Engine."""
-from app.core.faq.faq import answer as faq_answer
+"""Định tuyến tin nhắn qua quy trình phân tích FAQ kết hợp."""
+
+from app.core.faq.faq import FAQResult, analyze
+
+
+def analyze_message(message: str) -> FAQResult:
+    """Trả về ý định, cảm xúc, độ tin cậy, ứng viên và câu trả lời cuối."""
+    return analyze(message)
 
 
 def route(message: str) -> str:
-    """V1: mọi câu hỏi kiến thức -> FAQ. V2: phân loại FAQ vs Rule."""
-    return faq_answer(message)
+    """Giữ giao diện trả về văn bản cho các thành phần UI hiện tại."""
+    return analyze_message(message).answer

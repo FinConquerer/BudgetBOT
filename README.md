@@ -5,7 +5,7 @@ Chatbot tư vấn & lập kế hoạch ngân sách cá nhân — đồ án **AIO
 > ⚠️ Chỉ mang tính tham khảo, KHÔNG phải lời khuyên tài chính/đầu tư.
 
 ## Chức năng
-- **FAQ**: hỏi đáp kiến thức tài chính cá nhân (V1: tra DB từ khoá → V2: RAG/LLM).
+- **FAQ**: chuẩn hoá câu hỏi → nhận diện intent/sentiment → chấm điểm cụm từ → kiểm tra confidence; có thể kết hợp semantic embedding.
 - **Rule Engine**: thu thập thông tin → tính chỉ số (50/30/20, savings rate, quỹ khẩn cấp, tính khả thi mục tiêu) → đề xuất phân bổ. *Deterministic, có test.*
 
 ## Kiến trúc (monorepo — tách Frontend / Backend)
@@ -49,6 +49,17 @@ uvicorn app.main:app --reload      # API ở :8000
 cd ../frontend
 npm install && npm run dev          # UI ở :5173 (proxy /api → :8000)
 ```
+
+### Bật semantic embedding cho FAQ (tuỳ chọn)
+
+FAQ mặc định chạy bằng phrase/intent scoring và không tải model. Để bật tìm kiếm gần nghĩa:
+
+```bash
+pip install sentence-transformers
+export FAQ_EMBEDDING_MODEL="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+```
+
+Model được tải khi FAQ engine khởi tạo lần đầu. Giữ cùng một engine trong suốt vòng đời app để tái sử dụng embedding của kho FAQ.
 
 ## Quy trình (Scrum)
 - Branch: `feature/BP-<id>-<mô tả>` · commit: `BP-<id>: ...`
