@@ -52,6 +52,20 @@
       "title": "Đăng nhập để lưu kế hoạch",
       "description": "Tạo tài khoản để lưu và theo dõi lịch sử kế hoạch của bạn.",
       "action": "Đăng nhập"
+    },
+    "rule": {
+      "title": "Quy tắc 50/30/20",
+      "description": "Cách phân bổ thu nhập đơn giản, dễ áp dụng cho người mới quản lý tài chính.",
+      "needs": "Thiết yếu",
+      "needsDesc": "Ăn ở, đi lại, hoá đơn — những khoản bắt buộc.",
+      "wants": "Mong muốn",
+      "wantsDesc": "Giải trí, mua sắm, sở thích cá nhân.",
+      "savings": "Tiết kiệm",
+      "savingsDesc": "Tiết kiệm, đầu tư và trả nợ."
+    },
+    "tip": {
+      "title": "Mẹo hôm nay",
+      "body": "Lập quỹ khẩn cấp đủ 3–6 tháng chi tiêu thiết yếu trước khi đầu tư — đây là tấm đệm an toàn quan trọng nhất."
     }
   },
   "history": {
@@ -105,13 +119,25 @@
     },
     "hint": {
       "username": "Tối thiểu 3 ký tự",
-      "password": "Tối thiểu 8 ký tự"
+      "password": "Tối thiểu 8 ký tự",
+      "email": "Tuỳ chọn — dùng để khôi phục tài khoản và nhận thông báo."
     }
   },
   "planner": {
     "title": "Lập kế hoạch ngân sách",
     "subtitle": "Nhập thông tin tài chính để nhận phân bổ 50/30/20 và đánh giá mục tiêu.",
     "disclaimer": "Chỉ mang tính tham khảo, không phải lời khuyên đầu tư.",
+    "section": {
+      "income": "Thu nhập",
+      "spending": "Chi tiêu & Nợ",
+      "goal": "Mục tiêu tiết kiệm"
+    },
+    "goalStatus": {
+      "feasible": "Khả thi",
+      "tight": "Khá chật",
+      "not_feasible": "Chưa khả thi",
+      "none": "Chưa có mục tiêu"
+    },
     "form": {
       "monthlyIncome": "Thu nhập hàng tháng",
       "fixedExpenses": "Chi phí cố định",
@@ -121,7 +147,7 @@
       "currentSavings": "Tiết kiệm hiện có",
       "goal": "Mục tiêu tài chính",
       "goalAmount": "Số tiền mục tiêu",
-      "goalDeadline": "Thời hạn (tháng)",
+      "goalDeadlineMonths": "Thời hạn (tháng)",
       "stability": "Mức ổn định thu nhập",
       "calc": "Tính kế hoạch",
       "savePlan": "Lưu kế hoạch"
@@ -151,9 +177,11 @@
     "actions": "Việc nên làm",
     "whatif": {
       "title": "Thử kịch bản (what-if)",
-      "field": "Thay đổi yếu tố",
-      "delta": "Mức thay đổi",
+      "description": "Xem dư hàng tháng và tỷ lệ tiết kiệm thay đổi thế nào nếu một yếu tố tăng/giảm.",
+      "field": "Chọn yếu tố",
+      "delta": "Mức thay đổi (±₫)",
       "run": "Tính lại",
+      "hint": "Chọn yếu tố và nhập mức thay đổi (số âm để giảm), rồi bấm \"Tính lại\".",
       "surplusDelta": "Thay đổi dư",
       "rateDelta": "Thay đổi tỷ lệ tiết kiệm"
     },
@@ -174,8 +202,14 @@
     "sentiment": "Cảm xúc",
     "empty": {
       "title": "Bắt đầu trò chuyện",
-      "description": "Ví dụ: \"Tôi nên tiết kiệm bao nhiêu mỗi tháng?\""
-    }
+      "description": "Chọn một câu hỏi gợi ý hoặc tự nhập câu hỏi của bạn."
+    },
+    "suggestions": [
+      "Tôi nên tiết kiệm bao nhiêu mỗi tháng?",
+      "Quy tắc 50/30/20 là gì?",
+      "Làm sao để quản lý nợ?",
+      "Quỹ khẩn cấp nên có bao nhiêu?"
+    ]
   },
   "notFound": {
     "title": "Không tìm thấy trang",

@@ -80,6 +80,7 @@ export default function Register() {
             type="email"
             value={form.email}
             onChange={set("email")}
+            helperText={t("auth.hint.email")}
             fullWidth
           />
           <Button type="submit" variant="contained" size="large" disabled={busy} fullWidth>

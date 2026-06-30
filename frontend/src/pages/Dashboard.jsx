@@ -1,7 +1,13 @@
 /** Trang chính: lời chào, vài chỉ số nhanh (nếu đã đăng nhập) và lối tắt tới công cụ. */
 import { useEffect, useRef, useState } from "react";
 import { Alert, Box, Grid, Paper, Stack, Typography, useTheme } from "@mui/material";
-import { ChartPieIcon, ChatBubbleLeftRightIcon, ArchiveBoxIcon, BanknotesIcon } from "@heroicons/react/24/outline";
+import {
+  ChartPieIcon,
+  ChatBubbleLeftRightIcon,
+  ArchiveBoxIcon,
+  BanknotesIcon,
+  LightBulbIcon,
+} from "@heroicons/react/24/outline";
 import { Link as RouterLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageHeader from "../components/PageHeader.jsx";
@@ -144,8 +150,47 @@ export default function Dashboard() {
         </Grid>
       </Grid>
 
+      {/* Giải thích quy tắc 50/30/20 */}
+      <Paper sx={{ p: 2.5, borderRadius: 3, mt: 3 }} className="gsap-in">
+        <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+          {t("dashboard.rule.title")}
+        </Typography>
+        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+          {t("dashboard.rule.description")}
+        </Typography>
+        <Grid container spacing={2}>
+          {[
+            { pct: "50%", color: "#6366f1", title: "needs", desc: "needsDesc" },
+            { pct: "30%", color: "#f59e0b", title: "wants", desc: "wantsDesc" },
+            { pct: "20%", color: "#10b981", title: "savings", desc: "savingsDesc" },
+          ].map((r) => (
+            <Grid item xs={12} sm={4} key={r.title}>
+              <Box sx={{ p: 2, borderRadius: 2, border: `2px solid ${r.color}33`, height: "100%" }}>
+                <Typography variant="h5" sx={{ color: r.color, fontWeight: 800 }}>
+                  {r.pct}
+                </Typography>
+                <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>
+                  {t(`dashboard.rule.${r.title}`)}
+                </Typography>
+                <Typography variant="caption" color="text.secondary">
+                  {t(`dashboard.rule.${r.desc}`)}
+                </Typography>
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
+      </Paper>
+
+      {/* Mẹo tài chính */}
+      <Alert severity="info" icon={<LightBulbIcon style={{ width: 22, height: 22 }} />} sx={{ mt: 2.5 }} className="gsap-in">
+        <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>
+          {t("dashboard.tip.title")}
+        </Typography>
+        <Typography variant="body2">{t("dashboard.tip.body")}</Typography>
+      </Alert>
+
       {!isAuthed && (
-        <Box sx={{ mt: 3 }}>
+        <Box sx={{ mt: 2.5 }}>
           <EmptyState
             title={t("dashboard.loginPrompt.title")}
             description={t("dashboard.loginPrompt.description")}

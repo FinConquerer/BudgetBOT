@@ -60,9 +60,12 @@ export default function Chat() {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, busy]);
 
-  async function send(e) {
+  function send(e) {
     e.preventDefault();
-    const question = input.trim();
+    ask(input.trim());
+  }
+
+  async function ask(question) {
     if (!question || busy) return;
     setInput("");
     setMessages((m) => [...m, { role: "user", content: question }]);
@@ -98,12 +101,25 @@ export default function Chat() {
       >
         {messages.length === 0 ? (
           <Box sx={{ height: "100%", display: "grid", placeItems: "center" }}>
-            <EmptyState
-              bare
-              icon={<ChatBubbleLeftRightIcon />}
-              title={t("chat.empty.title")}
-              description={t("chat.empty.description")}
-            />
+            <Stack alignItems="center" spacing={2}>
+              <EmptyState
+                bare
+                icon={<ChatBubbleLeftRightIcon />}
+                title={t("chat.empty.title")}
+                description={t("chat.empty.description")}
+              />
+              <Stack direction="row" spacing={1} sx={{ flexWrap: "wrap", justifyContent: "center", gap: 1, maxWidth: 560 }}>
+                {t("chat.suggestions", { returnObjects: true }).map((s) => (
+                  <Chip
+                    key={s}
+                    label={s}
+                    onClick={() => ask(s)}
+                    variant="outlined"
+                    sx={{ cursor: "pointer" }}
+                  />
+                ))}
+              </Stack>
+            </Stack>
           </Box>
         ) : (
           <>

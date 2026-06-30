@@ -1,4 +1,4 @@
-/** Trang lập kế hoạch ngân sách: nhập liệu -> phân bổ 50/30/20, chỉ số, đánh giá mục tiêu, what-if. */
+/** Trang lập kế hoạch ngân sách: nhập liệu (chia nhóm) -> phân bổ 50/30/20, chỉ số, đánh giá mục tiêu, what-if. */
 import { useRef, useState } from "react";
 import {
   Alert,
@@ -32,17 +32,9 @@ import AllocationChart from "../components/AllocationChart.jsx";
 import { makePlan, runWhatIf, createSavedPlan } from "../api/plans.js";
 import { ApiError } from "../api/client.js";
 import { useAuth } from "../auth/AuthContext.jsx";
-import { formatVnd, formatCompactVnd, formatPercent, goalTone } from "../utils/format.js";
+import { formatVnd, formatVndRounded, formatCompactVnd, formatPercent, goalTone } from "../utils/format.js";
 import { useStaggerIn } from "../utils/gsap.js";
 
-const NUM_FIELDS = [
-  "fixed_expenses",
-  "variable_expenses",
-  "debt_payment",
-  "debt_outstanding",
-  "current_savings",
-  "goal_amount",
-];
 const WHATIF_FIELDS = ["monthly_income", "fixed_expenses", "variable_expenses", "debt_payment"];
 
 const EMPTY = {
@@ -74,6 +66,15 @@ function toRequest(form) {
   };
 }
 
+/** Tiêu đề nhóm trường trong form. */
+function SectionTitle({ children }) {
+  return (
+    <Typography variant="overline" color="text.secondary" sx={{ fontWeight: 700, display: "block", mt: 1 }}>
+      {children}
+    </Typography>
+  );
+}
+
 export default function Planner() {
   const { t } = useTranslation();
   const theme = useTheme();
@@ -91,6 +92,16 @@ export default function Planner() {
   const [comparison, setComparison] = useState(null);
 
   const set = (k) => (e) => setForm({ ...form, [k]: e.target.value });
+  const field = (k, extra = {}) => (
+    <TextField
+      label={t(`planner.form.${camel(k)}`)}
+      type="number"
+      value={form[k]}
+      onChange={set(k)}
+      fullWidth
+      {...extra}
+    />
+  );
 
   async function handleCalc(e) {
     e.preventDefault();
@@ -140,65 +151,45 @@ export default function Planner() {
         </Alert>
       )}
 
-      <Grid container spacing={2.5}>
+      <Grid container spacing={2.5} alignItems="flex-start">
         {/* FORM */}
         <Grid item xs={12} md={5}>
           <Paper component="form" onSubmit={handleCalc} sx={{ p: 2.5, borderRadius: 3 }} className="gsap-in">
             <Stack spacing={2}>
+              <SectionTitle>{t("planner.section.income")}</SectionTitle>
+              {field("monthly_income", { required: true })}
               <TextField
-                label={t("planner.form.monthlyIncome")}
-                type="number"
-                value={form.monthly_income}
-                onChange={set("monthly_income")}
-                required
+                select
+                label={t("planner.form.stability")}
+                value={form.income_stability}
+                onChange={set("income_stability")}
                 fullWidth
-              />
-              <Grid container spacing={2}>
-                {NUM_FIELDS.map((k) => (
-                  <Grid item xs={6} key={k}>
-                    <TextField
-                      label={t(`planner.form.${camel(k)}`)}
-                      type="number"
-                      value={form[k]}
-                      onChange={set(k)}
-                      fullWidth
-                    />
-                  </Grid>
+              >
+                {["stable", "unstable", "seasonal"].map((s) => (
+                  <MenuItem key={s} value={s}>
+                    {t(`planner.stability.${s}`)}
+                  </MenuItem>
                 ))}
-              </Grid>
+              </TextField>
+
+              <SectionTitle>{t("planner.section.spending")}</SectionTitle>
+              {field("fixed_expenses")}
+              {field("variable_expenses")}
+              {field("debt_payment")}
+              {field("debt_outstanding")}
+
+              <SectionTitle>{t("planner.section.goal")}</SectionTitle>
+              {field("current_savings")}
               <TextField
                 label={t("planner.form.goal")}
                 value={form.financial_goal}
                 onChange={set("financial_goal")}
                 fullWidth
               />
-              <Grid container spacing={2}>
-                <Grid item xs={6}>
-                  <TextField
-                    label={t("planner.form.goalDeadline")}
-                    type="number"
-                    value={form.goal_deadline_months}
-                    onChange={set("goal_deadline_months")}
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <TextField
-                    select
-                    label={t("planner.form.stability")}
-                    value={form.income_stability}
-                    onChange={set("income_stability")}
-                    fullWidth
-                  >
-                    {["stable", "unstable", "seasonal"].map((s) => (
-                      <MenuItem key={s} value={s}>
-                        {t(`planner.stability.${s}`)}
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                </Grid>
-              </Grid>
-              <Stack direction="row" spacing={1.5}>
+              {field("goal_amount")}
+              {field("goal_deadline_months")}
+
+              <Stack direction="row" spacing={1.5} sx={{ pt: 1 }}>
                 <Button type="submit" variant="contained" disabled={busy} fullWidth>
                   {t("planner.form.calc")}
                 </Button>
@@ -238,8 +229,7 @@ export default function Planner() {
                 <Grid item xs={6} sm={3}>
                   <StatCard
                     label={t("planner.result.savingsRate")}
-                    count={plan.metrics.savings_rate * 100}
-                    format={(n) => `${n.toFixed(1)}%`}
+                    value={formatPercent(plan.metrics.savings_rate)}
                     accent="#6366f1"
                     icon={<ArrowTrendingUpIcon />}
                   />
@@ -262,7 +252,7 @@ export default function Planner() {
                 </Grid>
               </Grid>
 
-              <Grid container spacing={2.5}>
+              <Grid container spacing={2.5} alignItems="stretch">
                 <Grid item xs={12} md={6}>
                   <Paper sx={{ p: 2.5, borderRadius: 3, height: "100%" }} className="gsap-in">
                     <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1 }}>
@@ -280,24 +270,34 @@ export default function Planner() {
                       <Chip
                         size="small"
                         color={goalTone(plan.goal_assessment.status)}
-                        label={plan.goal_assessment.status}
+                        label={t(`planner.goalStatus.${plan.goal_assessment.status}`)}
                       />
                     </Stack>
                     <Typography variant="body2" color="text.secondary" sx={{ mb: 1.5 }}>
                       {plan.goal_assessment.message}
                     </Typography>
                     {plan.goal_assessment.required_monthly_saving > 0 && (
-                      <Typography variant="body2">
-                        {t("planner.requiredSaving")}:{" "}
-                        <b>{formatVnd(plan.goal_assessment.required_monthly_saving)}</b>
-                      </Typography>
+                      <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: "background.subtle" }}>
+                        <Typography variant="caption" color="text.secondary">
+                          {t("planner.requiredSaving")}
+                        </Typography>
+                        <Typography variant="h6">
+                          {formatVndRounded(plan.goal_assessment.required_monthly_saving)}
+                        </Typography>
+                      </Box>
                     )}
+                    <Divider sx={{ my: 1.5 }} />
+                    <Stack spacing={0.5}>
+                      <Row label={t("planner.allocation.needs")} value={formatVnd(plan.allocation.needs)} />
+                      <Row label={t("planner.allocation.wants")} value={formatVnd(plan.allocation.wants)} />
+                      <Row label={t("planner.allocation.savings")} value={formatVnd(plan.allocation.savings)} />
+                    </Stack>
                   </Paper>
                 </Grid>
               </Grid>
 
               {(plan.warnings?.length > 0 || plan.action_items?.length > 0) && (
-                <Grid container spacing={2.5}>
+                <Grid container spacing={2.5} alignItems="stretch">
                   {plan.warnings?.length > 0 && (
                     <Grid item xs={12} md={6}>
                       <Paper sx={{ p: 2.5, borderRadius: 3, height: "100%" }} className="gsap-in">
@@ -335,16 +335,19 @@ export default function Planner() {
 
               {/* WHAT-IF */}
               <Paper sx={{ p: 2.5, borderRadius: 3 }} className="gsap-in">
-                <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1.5 }}>
+                <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
                   {t("planner.whatif.title")}
                 </Typography>
-                <Stack direction={{ xs: "column", sm: "row" }} spacing={2} alignItems="center">
+                <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                  {t("planner.whatif.description")}
+                </Typography>
+                <Stack direction={{ xs: "column", sm: "row" }} spacing={2} alignItems={{ sm: "center" }}>
                   <TextField
                     select
                     label={t("planner.whatif.field")}
                     value={whatif.field}
                     onChange={(e) => setWhatif({ ...whatif, field: e.target.value })}
-                    sx={{ minWidth: 200 }}
+                    sx={{ minWidth: 220 }}
                   >
                     {WHATIF_FIELDS.map((f) => (
                       <MenuItem key={f} value={f}>
@@ -357,12 +360,18 @@ export default function Planner() {
                     type="number"
                     value={whatif.delta}
                     onChange={(e) => setWhatif({ ...whatif, delta: e.target.value })}
+                    sx={{ minWidth: 160 }}
                   />
-                  <Button variant="outlined" onClick={handleWhatIf} className="no-hover-lift">
+                  <Button
+                    variant="contained"
+                    onClick={handleWhatIf}
+                    disabled={!whatif.delta}
+                    sx={{ px: 3, py: 1, whiteSpace: "nowrap" }}
+                  >
                     {t("planner.whatif.run")}
                   </Button>
                 </Stack>
-                {comparison && (
+                {comparison ? (
                   <>
                     <Divider sx={{ my: 2 }} />
                     <Stack direction="row" spacing={4}>
@@ -386,6 +395,10 @@ export default function Planner() {
                       </Box>
                     </Stack>
                   </>
+                ) : (
+                  <Typography variant="caption" color="text.secondary" sx={{ display: "block", mt: 1.5 }}>
+                    {t("planner.whatif.hint")}
+                  </Typography>
                 )}
               </Paper>
             </Stack>
@@ -401,6 +414,20 @@ export default function Planner() {
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       />
     </Box>
+  );
+}
+
+/** Dòng nhãn-giá trị nhỏ trong card đánh giá. */
+function Row({ label, value }) {
+  return (
+    <Stack direction="row" justifyContent="space-between">
+      <Typography variant="body2" color="text.secondary">
+        {label}
+      </Typography>
+      <Typography variant="body2" sx={{ fontWeight: 600 }}>
+        {value}
+      </Typography>
+    </Stack>
   );
 }
 

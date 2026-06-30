@@ -52,6 +52,20 @@
       "title": "Log in to save plans",
       "description": "Create an account to save and track your plan history.",
       "action": "Log in"
+    },
+    "rule": {
+      "title": "The 50/30/20 rule",
+      "description": "A simple way to split your income, great for getting started with budgeting.",
+      "needs": "Needs",
+      "needsDesc": "Housing, food, transport, bills — the essentials.",
+      "wants": "Wants",
+      "wantsDesc": "Entertainment, shopping, personal hobbies.",
+      "savings": "Savings",
+      "savingsDesc": "Saving, investing and paying down debt."
+    },
+    "tip": {
+      "title": "Today's tip",
+      "body": "Build an emergency fund covering 3–6 months of essential spending before investing — it's the most important safety net."
     }
   },
   "history": {
@@ -105,13 +119,25 @@
     },
     "hint": {
       "username": "At least 3 characters",
-      "password": "At least 8 characters"
+      "password": "At least 8 characters",
+      "email": "Optional — used for account recovery and notifications."
     }
   },
   "planner": {
     "title": "Budget planner",
     "subtitle": "Enter your finances to get a 50/30/20 allocation and goal assessment.",
     "disclaimer": "For reference only, not investment advice.",
+    "section": {
+      "income": "Income",
+      "spending": "Spending & Debt",
+      "goal": "Savings goal"
+    },
+    "goalStatus": {
+      "feasible": "Feasible",
+      "tight": "Tight",
+      "not_feasible": "Not feasible",
+      "none": "No goal"
+    },
     "form": {
       "monthlyIncome": "Monthly income",
       "fixedExpenses": "Fixed expenses",
@@ -121,7 +147,7 @@
       "currentSavings": "Current savings",
       "goal": "Financial goal",
       "goalAmount": "Goal amount",
-      "goalDeadline": "Deadline (months)",
+      "goalDeadlineMonths": "Deadline (months)",
       "stability": "Income stability",
       "calc": "Calculate plan",
       "savePlan": "Save plan"
@@ -151,9 +177,11 @@
     "actions": "Action items",
     "whatif": {
       "title": "What-if scenario",
-      "field": "Change factor",
-      "delta": "Change amount",
+      "description": "See how your monthly surplus and savings rate change if one factor goes up or down.",
+      "field": "Choose factor",
+      "delta": "Change amount (±₫)",
       "run": "Recalculate",
+      "hint": "Pick a factor and enter a change amount (negative to decrease), then press \"Recalculate\".",
       "surplusDelta": "Surplus change",
       "rateDelta": "Savings rate change"
     },
@@ -174,8 +202,14 @@
     "sentiment": "Sentiment",
     "empty": {
       "title": "Start a conversation",
-      "description": "e.g. \"How much should I save each month?\""
-    }
+      "description": "Pick a suggested question or type your own."
+    },
+    "suggestions": [
+      "How much should I save each month?",
+      "What is the 50/30/20 rule?",
+      "How do I manage debt?",
+      "How big should my emergency fund be?"
+    ]
   },
   "notFound": {
     "title": "Page not found",

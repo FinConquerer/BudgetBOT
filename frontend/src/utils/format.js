@@ -2,22 +2,29 @@
  * Helper format hiển thị. Nguyên tắc: mọi hiển thị tiền/tỷ lệ đi qua đây để nhất quán.
  */
 
-/** Format số tiền VND, ví dụ 20000000 -> "20.000.000 ₫". @param {number} v */
+/** Format số tiền VND (làm tròn về đồng), ví dụ 4166666.67 -> "4.166.667 ₫". @param {number} v */
 export function formatVnd(v) {
-  const n = Number(v) || 0;
+  const n = Math.round(Number(v) || 0);
   return `${n.toLocaleString("vi-VN")} ₫`;
 }
 
-/** Format số rút gọn: 1.300.000 -> "1,3tr"; 15.000.000 -> "15tr". @param {number} v */
-export function formatCompactVnd(v) {
-  const n = Number(v) || 0;
-  if (Math.abs(n) >= 1_000_000_000) return `${(n / 1_000_000_000).toFixed(1)} tỷ`;
-  if (Math.abs(n) >= 1_000_000) return `${(n / 1_000_000).toFixed(n % 1_000_000 ? 1 : 0)} tr`;
-  if (Math.abs(n) >= 1_000) return `${(n / 1_000).toFixed(0)}k`;
-  return String(n);
+/** Làm tròn tiền tới hàng nghìn để hiển thị thân thiện. @param {number} v */
+export function formatVndRounded(v) {
+  const n = Math.round((Number(v) || 0) / 1000) * 1000;
+  return `${n.toLocaleString("vi-VN")} ₫`;
 }
 
-/** Tỷ lệ 0..1 (hoặc 0..100) -> "12,3%". @param {number} v @param {boolean} alreadyPercent */
+/** Format số rút gọn: 1300000 -> "1,3 tr"; 15000000 -> "15 tr". @param {number} v */
+export function formatCompactVnd(v) {
+  const n = Number(v) || 0;
+  const fmt = (x, d = 1) => x.toLocaleString("vi-VN", { maximumFractionDigits: d });
+  if (Math.abs(n) >= 1_000_000_000) return `${fmt(n / 1_000_000_000)} tỷ`;
+  if (Math.abs(n) >= 1_000_000) return `${fmt(n / 1_000_000)} tr`;
+  if (Math.abs(n) >= 1_000) return `${fmt(n / 1_000, 0)}k`;
+  return String(Math.round(n));
+}
+
+/** Tỷ lệ 0..1 (hoặc 0..100) -> "15,3%". @param {number} v @param {boolean} alreadyPercent */
 export function formatPercent(v, alreadyPercent = false) {
   const n = (Number(v) || 0) * (alreadyPercent ? 1 : 100);
   return `${n.toLocaleString("vi-VN", { maximumFractionDigits: 1 })}%`;
