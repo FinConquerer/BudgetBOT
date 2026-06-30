@@ -1,4 +1,4 @@
-"""Service xử lý use case budget plan và what-if."""
+"""Service xử lý nghiệp vụ kế hoạch ngân sách và what-if."""
 
 from dataclasses import asdict, replace
 
@@ -20,13 +20,13 @@ from app.schemas import (
 
 
 class BudgetService:
-    """Điều phối API use cases và gọi rulebase."""
+    """Điều phối nghiệp vụ API và gọi rulebase."""
 
     def __init__(self, profile_repository: ProfileRepository):
         self.profile_repository = profile_repository
 
     def create_plan(self, request: PlanRequest) -> PlanResponse:
-        """Tạo budget plan từ request đã được validate."""
+        """Tạo kế hoạch ngân sách từ yêu cầu đã được kiểm tra hợp lệ."""
         profile = self._profile_from_request(request)
         plan = create_budget_plan(profile)
         return self._response_from_plan(plan, request)
@@ -57,7 +57,7 @@ class BudgetService:
         )
 
     def list_mock_profiles(self) -> list[MockProfileResponse]:
-        """Trả danh sách mock profiles qua repository."""
+        """Trả danh sách hồ sơ mẫu qua lớp truy xuất dữ liệu."""
         return self.profile_repository.list_profiles()
 
     def _profile_from_request(self, request: PlanRequest) -> BudgetProfile:
@@ -91,7 +91,7 @@ class BudgetService:
             summary=FinancialSummaryResponse(**asdict(plan.summary)),
             metrics=FinancialMetricsResponse(**asdict(plan.metrics)),
             allocation=BudgetAllocationResponse(**asdict(plan.allocation)),
-            goal_assessment=GoalAssessmentResponse(**asdict(plan.goal_assessment)),
+            goal_assessment=GoalAssessmentResponse(**asdict (plan.goal_assessment)),
             warnings=plan.warnings,
             action_items=plan.action_items,
             allocation_50_30_20=allocation_dict,

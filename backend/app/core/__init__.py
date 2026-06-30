@@ -1,1 +1,1 @@
-"""BudgetBOT — trợ lý ngân sách cá nhân."""
+"""Lõi xử lý nghiệp vụ của BudgetBOT."""

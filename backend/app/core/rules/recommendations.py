@@ -1,4 +1,4 @@
-"""Rule tạo gợi ý hành động cho budget plan."""
+"""Quy tắc tạo gợi ý hành động cho kế hoạch ngân sách."""
 
 from app.core.rules.models import BudgetProfile, GoalAssessment
 

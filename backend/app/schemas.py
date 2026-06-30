@@ -1,5 +1,7 @@
 """Pydantic schemas — hợp đồng dữ liệu giữa Frontend và API."""
 
+from datetime import datetime
+from typing import Any
 from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
@@ -10,7 +12,7 @@ WhatIfField = Literal["monthly_income", "fixed_expenses", "variable_expenses", "
 
 
 class PlanRequest(BaseModel):
-    """Thông tin người dùng để tạo budget plan."""
+    """Thông tin người dùng để tạo kế hoạch ngân sách."""
 
     model_config = ConfigDict(
         json_schema_extra={
@@ -134,8 +136,8 @@ class MockProfileResponse(BaseModel):
 
 
 class VersionResponse(BaseModel):
-    name: str
-    version: str
+    name: str = "BudgetBOT API"
+    version: str = "1.0.0"
     environment: str
 
 
@@ -164,3 +166,133 @@ class FaqListResponse(BaseModel):
     total: int
     limit: int
     offset: int
+
+
+class UserRegisterRequest(BaseModel):
+    username: str = Field(..., min_length=3)
+    password: str = Field(..., min_length=8)
+    email: str | None = None
+
+
+class UserLoginRequest(BaseModel):
+    username: str
+    password: str
+
+
+class UserResponse(BaseModel):
+    id: str
+    username: str
+    email: str | None = None
+    role: Literal["user", "admin"]
+    is_active: bool
+    created_at: datetime
+    updated_at: datetime
+
+
+class TokenUserResponse(BaseModel):
+    id: str
+    username: str
+    email: str | None = None
+    role: Literal["user", "admin"]
+
+
+class LoginResponse(BaseModel):
+    access_token: str
+    token_type: Literal["bearer"] = "bearer"
+    expires_in: int
+    user: TokenUserResponse
+
+
+class SavedPlanResponse(BaseModel):
+    id: str
+    user_id: str
+    input_data: dict[str, Any]
+    result: PlanResponse
+    created_at: datetime
+
+
+class PlanListItemResponse(BaseModel):
+    id: str
+    financial_goal: str | None = None
+    monthly_income: float
+    monthly_surplus: float
+    created_at: datetime
+
+
+class PlanListResponse(BaseModel):
+    items: list[PlanListItemResponse]
+    total: int
+    limit: int
+    offset: int
+
+
+class DeletePlanResponse(BaseModel):
+    id: str
+    deleted: bool
+
+
+class ChatCreateRequest(BaseModel):
+    title: str | None = None
+
+
+class ChatUpdateRequest(BaseModel):
+    title: str
+
+
+class ChatSessionResponse(BaseModel):
+    id: str
+    user_id: str
+    title: str | None = None
+    created_at: datetime
+    updated_at: datetime
+
+
+class ChatListItemResponse(BaseModel):
+    id: str
+    title: str | None = None
+    last_message_preview: str | None = None
+    created_at: datetime
+    updated_at: datetime
+
+
+class ChatListResponse(BaseModel):
+    items: list[ChatListItemResponse]
+    total: int
+    limit: int
+    offset: int
+
+
+class DeleteChatResponse(BaseModel):
+    id: str
+    deleted: bool
+
+
+class ChatMessageSourceResponse(BaseModel):
+    faq_id: str
+    question: str
+
+
+class ChatMessageResponse(BaseModel):
+    id: str
+    chat_id: str
+    role: Literal["user", "assistant", "system"]
+    content: str
+    sources: list[ChatMessageSourceResponse] = Field(default_factory=list)
+    created_at: datetime
+
+
+class ChatMessagesResponse(BaseModel):
+    items: list[ChatMessageResponse]
+    total: int
+    limit: int
+    offset: int
+
+
+class ChatAskRequest(BaseModel):
+    message: str = Field(..., min_length=1)
+
+
+class ChatAskResponse(BaseModel):
+    chat_id: str
+    user_message: ChatMessageResponse
+    assistant_message: ChatMessageResponse

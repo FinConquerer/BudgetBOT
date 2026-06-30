@@ -4,10 +4,9 @@ from dataclasses import dataclass
 from typing import Literal
 
 
-
 @dataclass
 class UserProfile:
-    """Model cũ dùng cho rule 50/30/20 hiện có."""
+    """Mô hình cũ dùng cho quy tắc 50/30/20 hiện có."""
 
     monthly_income: float
     essential_expenses: float = 0.0  # nhu cầu thiết yếu (needs)
@@ -24,7 +23,7 @@ GoalStatus = Literal["none", "feasible", "tight", "not_feasible"]
 
 @dataclass(frozen=True)
 class BudgetProfile:
-    """Thông tin tài chính đầu vào cho rulebase budget planner."""
+    """Thông tin tài chính đầu vào cho bộ lập kế hoạch ngân sách rulebase."""
 
     monthly_income: float
     fixed_expenses: float = 0.0

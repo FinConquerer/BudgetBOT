@@ -5,8 +5,11 @@ Local dev không có Postgres -> mặc định SQLite file để vẫn chạy đ
 """
 import os
 
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
+
+load_dotenv()
 
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./budgetbot.db")
 
@@ -22,7 +25,7 @@ class Base(DeclarativeBase):
 
 
 def get_db():
-    """Dependency FastAPI: mở session cho mỗi request, đóng khi xong."""
+    """Phụ thuộc FastAPI: mở phiên làm việc cho mỗi yêu cầu và đóng khi xong."""
     db = SessionLocal()
     try:
         yield db

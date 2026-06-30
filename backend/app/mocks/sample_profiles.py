@@ -1,4 +1,4 @@
-"""Mock profiles để demo và test API khi chưa có database."""
+"""Hồ sơ mẫu để demo và test API khi chưa có database."""
 
 SAMPLE_PROFILES = [
     {
