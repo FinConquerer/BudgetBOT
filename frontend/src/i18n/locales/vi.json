@@ -103,7 +103,17 @@
       "subtitle": "Chào mừng trở lại BudgetBOT",
       "submit": "Đăng nhập",
       "noAccount": "Chưa có tài khoản?",
-      "toRegister": "Đăng ký ngay"
+      "toRegister": "Đăng ký ngay",
+      "forgot": "Quên mật khẩu?"
+    },
+    "forgot": {
+      "title": "Đặt lại mật khẩu",
+      "subtitle": "Nhập tên đăng nhập và email đã đăng ký để đặt mật khẩu mới.",
+      "newPassword": "Mật khẩu mới",
+      "emailHint": "Email phải khớp với email đã đăng ký của tài khoản.",
+      "submit": "Đặt lại mật khẩu",
+      "success": "Đổi mật khẩu thành công! Đang chuyển tới trang đăng nhập…",
+      "backToLogin": "Quay lại đăng nhập"
     },
     "register": {
       "title": "Tạo tài khoản",
@@ -115,7 +125,8 @@
     "fields": {
       "username": "Tên đăng nhập",
       "password": "Mật khẩu",
-      "email": "Email (tuỳ chọn)"
+      "email": "Email (tuỳ chọn)",
+      "emailRequired": "Email"
     },
     "hint": {
       "username": "Tối thiểu 3 ký tự",

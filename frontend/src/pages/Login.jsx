@@ -72,6 +72,11 @@ export default function Login() {
           <Button type="submit" variant="contained" size="large" disabled={busy} fullWidth>
             {t("auth.login.submit")}
           </Button>
+          <Box sx={{ textAlign: "right" }}>
+            <Link component={RouterLink} to="/forgot-password" variant="body2">
+              {t("auth.login.forgot")}
+            </Link>
+          </Box>
         </Stack>
       </Box>
     </AuthShell>

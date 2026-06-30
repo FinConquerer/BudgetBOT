@@ -11,6 +11,7 @@ const History = lazy(() => import("./pages/History.jsx"));
 const Faq = lazy(() => import("./pages/Faq.jsx"));
 const Login = lazy(() => import("./pages/Login.jsx"));
 const Register = lazy(() => import("./pages/Register.jsx"));
+const ForgotPassword = lazy(() => import("./pages/ForgotPassword.jsx"));
 const NotFound = lazy(() => import("./pages/NotFound.jsx"));
 
 function Fallback() {
@@ -27,6 +28,7 @@ export default function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route element={<AppLayout />}>
           <Route path="/" element={<Dashboard />} />
           <Route path="/planner" element={<Planner />} />

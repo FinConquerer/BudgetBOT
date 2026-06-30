@@ -103,7 +103,17 @@
       "subtitle": "Welcome back to BudgetBOT",
       "submit": "Log in",
       "noAccount": "No account yet?",
-      "toRegister": "Sign up"
+      "toRegister": "Sign up",
+      "forgot": "Forgot password?"
+    },
+    "forgot": {
+      "title": "Reset password",
+      "subtitle": "Enter your username and registered email to set a new password.",
+      "newPassword": "New password",
+      "emailHint": "Email must match the account's registered email.",
+      "submit": "Reset password",
+      "success": "Password changed! Redirecting to login…",
+      "backToLogin": "Back to login"
     },
     "register": {
       "title": "Create account",
@@ -115,7 +125,8 @@
     "fields": {
       "username": "Username",
       "password": "Password",
-      "email": "Email (optional)"
+      "email": "Email (optional)",
+      "emailRequired": "Email"
     },
     "hint": {
       "username": "At least 3 characters",

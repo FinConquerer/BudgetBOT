@@ -179,6 +179,16 @@ class UserLoginRequest(BaseModel):
     password: str
 
 
+class PasswordResetRequest(BaseModel):
+    username: str = Field(..., min_length=3)
+    email: str = Field(..., min_length=3)
+    new_password: str = Field(..., min_length=8)
+
+
+class PasswordResetResponse(BaseModel):
+    success: bool = True
+
+
 class UserResponse(BaseModel):
     id: str
     username: str

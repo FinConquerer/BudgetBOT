@@ -15,6 +15,8 @@ from app.repositories.user_repository import (
 )
 from app.schemas import (
     LoginResponse,
+    PasswordResetRequest,
+    PasswordResetResponse,
     TokenUserResponse,
     UserLoginRequest,
     UserRegisterRequest,
@@ -78,6 +80,28 @@ class AuthService:
                 role=user.role,
             ),
         )
+
+    def reset_password(self, request: PasswordResetRequest) -> PasswordResetResponse:
+        """Đặt lại mật khẩu khi username + email khớp một tài khoản đang hoạt động.
+
+        Chưa có hạ tầng gửi email nên dùng email như yếu tố xác minh. Trả lỗi chung
+        để không tiết lộ tài khoản nào tồn tại.
+        """
+        invalid = HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Username và email không khớp tài khoản nào",
+        )
+        user = self.user_repository.get_by_username(request.username)
+        if not user or not user.email or user.email.lower() != request.email.lower():
+            raise invalid
+        if not user.is_active:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Inactive user",
+            )
+
+        self.user_repository.update_password(user.id, hash_password(request.new_password))
+        return PasswordResetResponse(success=True)
 
     def get_current_user(self, token: str) -> UserRecord:
         payload = decode_access_token(token)

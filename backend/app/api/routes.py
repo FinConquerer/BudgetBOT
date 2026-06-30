@@ -34,6 +34,8 @@ from app.schemas import (
     FaqResponse,
     LoginResponse,
     MockProfileResponse,
+    PasswordResetRequest,
+    PasswordResetResponse,
     PlanListResponse,
     PlanRequest,
     PlanResponse,
@@ -82,6 +84,14 @@ def login(
     service: AuthService = Depends(get_auth_service),
 ) -> LoginResponse:
     return service.login(req)
+
+
+@router.post("/auth/reset-password", response_model=PasswordResetResponse, tags=["auth"])
+def reset_password(
+    req: PasswordResetRequest,
+    service: AuthService = Depends(get_auth_service),
+) -> PasswordResetResponse:
+    return service.reset_password(req)
 
 
 @router.get("/auth/me", response_model=UserResponse, tags=["auth"])

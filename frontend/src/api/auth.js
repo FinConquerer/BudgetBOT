@@ -13,6 +13,11 @@ export async function login(body) {
   return res;
 }
 
+/** Đặt lại mật khẩu (xác minh username + email). @param {{username:string, email:string, new_password:string}} body */
+export function resetPassword(body) {
+  return apiFetch("/auth/reset-password", { method: "POST", body: JSON.stringify(body) });
+}
+
 export function getMe() {
   return apiFetch("/auth/me");
 }
