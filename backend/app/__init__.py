@@ -1,0 +1,1 @@
+"""Backend BudgetBOT dùng FastAPI."""
