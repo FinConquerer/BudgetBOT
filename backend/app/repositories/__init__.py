@@ -1,1 +1,1 @@
-"""Repository layer cho nguồn dữ liệu backend."""
+"""Tầng truy xuất dữ liệu cho backend."""

@@ -1,1 +1,1 @@
-"""Service layer cho use case backend."""
+"""Tầng service cho các trường hợp sử dụng của backend."""

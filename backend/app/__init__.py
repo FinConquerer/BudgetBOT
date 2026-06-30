@@ -1,1 +1,1 @@
-"""BudgetBOT backend (FastAPI)."""
+"""Backend BudgetBOT dùng FastAPI."""

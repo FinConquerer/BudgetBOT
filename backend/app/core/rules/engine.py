@@ -1,4 +1,4 @@
-"""Rule Engine — điều phối các rule để tạo budget plan deterministic."""
+"""Bộ điều phối rule để tạo kế hoạch ngân sách xác định."""
 
 from app.core.rules.calculators import (
     calculate_50_30_20_allocation,
@@ -98,7 +98,7 @@ def validate_budget_profile(profile: BudgetProfile) -> None:
 
 
 def create_budget_plan(profile: BudgetProfile) -> BudgetPlan:
-    """Tạo budget plan đầy đủ từ thông tin tài chính người dùng."""
+    """Tạo kế hoạch ngân sách đầy đủ từ thông tin tài chính người dùng."""
     validate_budget_profile(profile)
 
     total_expenses = calculate_total_expenses(
