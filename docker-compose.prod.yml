@@ -1,0 +1,25 @@
+# Cấu hình production: backend (uvicorn) + frontend (nginx build tĩnh).
+# KHÔNG kèm Postgres — trỏ tới database sẵn có qua DATABASE_URL trong .env.prod.
+# Nếu Postgres chạy ngay trên host, dùng host.docker.internal:5432 trong DATABASE_URL
+# (đã bật extra_hosts bên dưới).
+services:
+  backend:
+    build: ./backend
+    env_file: .env.prod
+    # Chạy migration Alembic trước khi khởi động API.
+    command: sh -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    expose:
+      - "8000"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped

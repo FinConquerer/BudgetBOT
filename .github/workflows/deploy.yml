@@ -1,0 +1,28 @@
+name: Deploy
+
+# Deploy production khi push vào nhánh production, hoặc chạy tay.
+# Yêu cầu Secrets trong repo: DEPLOY_HOST, DEPLOY_USER, DEPLOY_SSH_KEY,
+# DEPLOY_PATH (đường dẫn repo trên server). Tuỳ chọn: DEPLOY_PORT (mặc định 22).
+on:
+  push:
+    branches: [production]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH deploy
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: ${{ secrets.DEPLOY_PORT || 22 }}
+          script: |
+            set -e
+            cd "${{ secrets.DEPLOY_PATH }}"
+            git fetch origin production
+            git reset --hard origin/production
+            docker compose -f docker-compose.prod.yml up -d --build
+            docker image prune -f
