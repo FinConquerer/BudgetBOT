@@ -34,6 +34,8 @@ from app.schemas import (
     FaqResponse,
     LoginResponse,
     MockProfileResponse,
+    PasswordResetRequest,
+    PasswordResetResponse,
     PlanListResponse,
     PlanRequest,
     PlanResponse,
@@ -82,6 +84,14 @@ def login(
     service: AuthService = Depends(get_auth_service),
 ) -> LoginResponse:
     return service.login(req)
+
+
+@router.post("/auth/reset-password", response_model=PasswordResetResponse, tags=["auth"])
+def reset_password(
+    req: PasswordResetRequest,
+    service: AuthService = Depends(get_auth_service),
+) -> PasswordResetResponse:
+    return service.reset_password(req)
 
 
 @router.get("/auth/me", response_model=UserResponse, tags=["auth"])
@@ -257,8 +267,16 @@ def list_faqs(
     offset: int = Query(default=0, ge=0),
     db: Session = Depends(get_db),
 ) -> FaqListResponse:
-    """Lấy danh sách FAQ public, có tìm kiếm theo câu hỏi/answer/keyword."""
-    query = db.query(Faq).filter(Faq.is_active.is_(True))
+    """Lấy danh sách FAQ public, có tìm kiếm theo câu hỏi/answer/keyword.
+
+    Loại bỏ dữ liệu hội thoại của chatbot (chào hỏi GREET_*, fallback FALL_*)
+    để trang FAQ chỉ hiển thị câu hỏi tài chính thực sự.
+    """
+    query = db.query(Faq).filter(
+        Faq.is_active.is_(True),
+        ~Faq.faq_key.like("GREET\\_%", escape="\\"),
+        ~Faq.faq_key.like("FALL\\_%", escape="\\"),
+    )
     if q:
         pattern = f"%{q.strip()}%"
         query = query.filter(

@@ -61,6 +61,23 @@ class InMemoryUserRepository:
         self.users[user.id] = user
         return user
 
+    def update_password(self, user_id, password_hash):
+        user = self.users.get(user_id)
+        if user is None:
+            return None
+        updated = UserRecord(
+            id=user.id,
+            username=user.username,
+            email=user.email,
+            password_hash=password_hash,
+            role=user.role,
+            is_active=user.is_active,
+            created_at=user.created_at,
+            updated_at=datetime.now(timezone.utc),
+        )
+        self.users[user_id] = updated
+        return updated
+
 
 class InMemoryPlanRepository:
     def __init__(self):
@@ -368,6 +385,39 @@ def test_login_endpoint_returns_bearer_token(client):
     assert body["access_token"].count(".") == 2
     assert body["expires_in"] > 0
     assert body["user"]["username"] == "duc"
+
+
+def test_reset_password_with_matching_email_lets_user_login(client):
+    client.post(
+        "/api/auth/register",
+        json={"username": "duc", "password": "12345678", "email": "duc@example.com"},
+    )
+
+    r = client.post(
+        "/api/auth/reset-password",
+        json={"username": "duc", "email": "duc@example.com", "new_password": "newpass123"},
+    )
+    assert r.status_code == 200
+    assert r.json()["success"] is True
+
+    # mật khẩu cũ không còn dùng được, mật khẩu mới đăng nhập được
+    old = client.post("/api/auth/login", json={"username": "duc", "password": "12345678"})
+    assert old.status_code == 401
+    new = client.post("/api/auth/login", json={"username": "duc", "password": "newpass123"})
+    assert new.status_code == 200
+
+
+def test_reset_password_rejects_wrong_email(client):
+    client.post(
+        "/api/auth/register",
+        json={"username": "duc", "password": "12345678", "email": "duc@example.com"},
+    )
+
+    r = client.post(
+        "/api/auth/reset-password",
+        json={"username": "duc", "email": "wrong@example.com", "new_password": "newpass123"},
+    )
+    assert r.status_code == 400
 
 
 def test_me_endpoint_returns_current_user(client):

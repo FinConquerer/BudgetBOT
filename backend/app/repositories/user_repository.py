@@ -44,6 +44,9 @@ class UserRepository(Protocol):
     ) -> UserRecord:
         """Tạo tài khoản user thường."""
 
+    def update_password(self, user_id: str, password_hash: str) -> UserRecord | None:
+        """Cập nhật mật khẩu (đã hash) cho user; trả None nếu không tìm thấy."""
+
 
 class DuplicateUserError(Exception):
     """Lỗi khi username hoặc email vi phạm ràng buộc unique."""
@@ -91,6 +94,16 @@ class SQLAlchemyUserRepository:
         except IntegrityError as exc:
             self.db.rollback()
             raise DuplicateUserError from exc
+        self.db.refresh(user)
+        return self._to_record(user)
+
+    def update_password(self, user_id: str, password_hash: str) -> UserRecord | None:
+        user = self.db.get(User, user_id)
+        if user is None:
+            return None
+        user.password_hash = password_hash
+        user.updated_at = datetime.now(timezone.utc)
+        self.db.commit()
         self.db.refresh(user)
         return self._to_record(user)
 
