@@ -1,8 +1,10 @@
 name: Deploy
 
 # Deploy production khi push vào nhánh production, hoặc chạy tay.
-# Yêu cầu Secrets trong repo: DEPLOY_HOST, DEPLOY_USER, DEPLOY_SSH_KEY,
-# DEPLOY_PATH (đường dẫn repo trên server). Tuỳ chọn: DEPLOY_PORT (mặc định 22).
+# Chỉ chạy khi Variable DEPLOY_ENABLED=true (Settings → Secrets and variables →
+# Actions → Variables). Chưa bật thì job được SKIP (không báo đỏ).
+# Yêu cầu Secrets: DEPLOY_HOST, DEPLOY_USER, DEPLOY_SSH_KEY, DEPLOY_PATH.
+# Tuỳ chọn: DEPLOY_PORT (mặc định 22).
 on:
   push:
     branches: [production]
@@ -11,6 +13,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: ${{ vars.DEPLOY_ENABLED == 'true' }}
     steps:
       - name: SSH deploy
         uses: appleboy/ssh-action@v1.2.0
